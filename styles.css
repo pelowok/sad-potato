@@ -1,0 +1,15 @@
+/* Apply styles for the image container div */
+#imageContainer {
+  width: 20%;
+  max-width: 200px; /* Adjust max-width as needed */
+  margin: 20px; /* Adding some margin for spacing */
+  border: 1px solid #000; /* Example border for visualization */
+  /* Other styles for the container */
+}
+
+/* Adjust the image inside the container */
+#playerImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
