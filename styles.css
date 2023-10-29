@@ -10,6 +10,8 @@
 /* Adjust the image inside the container */
 #playerImage {
   width: 100%;
+  min-width: 250px; /* Set minimum width */
+  max-width: 600px; /* Set maximum width */
   height: auto;
   display: block;
 }
