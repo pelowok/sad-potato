@@ -1,29 +1,36 @@
 body {
+  font-size: 14px;
+  margin: 2em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
+}
+
+header {
+  text-align: left;
+  margin-bottom: 2em;
+}
+
+h1.main-title {
+  font-size: 1.5em;
   margin: 0;
-  font-family: Arial, sans-serif;
 }
 
-h1, input, button, p, #imageContainer {
-  margin: 10px;
+#startButton {
+  padding: 3em; /* Set internal padding */
+  font-size: 2em; /* Increase font size */
+  margin-top: auto; /* Move the button to the bottom of the page */
 }
 
-/* Apply styles for the image container div */
-#imageContainer {
-  width: 20%;
-  max-width: 200px;
-  border: 1px solid #000;
-}
-
-/* Adjust the image inside the container */
-#playerImage {
-  width: 100%;
-  min-width: 250px;
-  max-width: 600px;
-  height: auto;
-  display: block;
+.starting-message {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 6em;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 1s;
 }
