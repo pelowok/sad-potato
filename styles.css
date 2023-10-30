@@ -105,6 +105,10 @@ input[type="range"] {
   grid-column: span 2; /* Span all columns */
 }
 
+#startingMessage {
+  padding-top: 2em;
+}
+
 .starting-message {
   display: none;
   position: fixed;
