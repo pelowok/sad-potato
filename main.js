@@ -51,26 +51,32 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   startButton.addEventListener('click', () => {
-    startingMessage.textContent = 'Good luck, everybody.';
-    startingMessage.style.display = 'block';
+    // Fade all elements to black and remove content from PLG after immediate activation
+    document.body.style.transition = 'background-color 1.5s ease';
+    document.body.style.backgroundColor = 'black';
 
     setTimeout(() => {
+      const pageLayoutGrid = document.getElementById('pageLayoutGrid');
+      while (pageLayoutGrid.firstChild) {
+        pageLayoutGrid.removeChild(pageLayoutGrid.firstChild);
+      }
+    }, 1500); // 1.5 seconds for the fade to black
+
+    setTimeout(() => {
+      console.log('Start the game after 5 seconds');
+      // Add your game start logic here after 5 seconds
+    }, 5000); // 5 seconds after Start Button activation
+
+    setTimeout(() => {
+      startingMessage.textContent = 'Good luck, everybody.';
+      startingMessage.style.display = 'block';
       startingMessage.style.opacity = '1';
+
       setTimeout(() => {
         startingMessage.style.opacity = '0';
         startingMessage.textContent = '';
-
-        setTimeout(() => {
-          document.body.style.transition = 'background-color 1.5s ease';
-          document.body.style.backgroundColor = 'black';
-
-          // Remove content from the Page Layout Grid (PLG)
-          const pageLayoutGrid = document.getElementById('pageLayoutGrid');
-          while (pageLayoutGrid.firstChild) {
-            pageLayoutGrid.removeChild(pageLayoutGrid.firstChild);
-          }
-        }, 3000); // 3 seconds after Start Button activation
-      }, 1500); // 1.5 seconds for the fade to black
-    }, 100);
+      }, 3000); // 3 seconds for the message to fade out
+    }, 1500); // 1.5 seconds after Start Button activation for Start Message
   });
+
 });
