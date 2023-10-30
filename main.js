@@ -1,11 +1,10 @@
-
 // Event listener for the player slider
 document.getElementById('playerSlider').addEventListener('input', (event) => {
   const selectedPlayers = event.target.value;
   document.getElementById('playerCount').textContent = `Number of Players: ${selectedPlayers}`;
 
   const imageSrc = `./img/${selectedPlayers}p.jpg`; // Construct the image filename
-  document.getElementById('playerImage').src = imageSrc; // Set the image src attribute
+  document.getElementById('teamImage').src = imageSrc; // Set the image src attribute
 });
 
 // Function for toggling the dropdown menu
@@ -25,7 +24,6 @@ window.addEventListener('click', function(event) {
     }
   }
 });
-
 // Function to initiate the dropdown menu functionality
 window.toggleMenu = toggleMenu;
 
@@ -74,6 +72,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100);
   });
 });
-
-
-
