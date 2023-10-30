@@ -8,6 +8,24 @@ document.getElementById('playerSlider').addEventListener('input', (event) => {
   document.getElementById('playerImage').src = imageSrc; // Set the image src attribute
 });
 
+// JavaScript for dropdown menu functionality
+function toggleMenu(button) {
+  button.nextElementSibling.classList.toggle("show");
+}
+
+window.onclick = function(event) {
+  if (!event.target.matches('.menu-button')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const playerSlider = document.getElementById('playerSlider');
   const playerImage = document.getElementById('playerImage');
