@@ -1,11 +1,10 @@
-
 // Event listener for the player slider
 document.getElementById('playerSlider').addEventListener('input', (event) => {
   const selectedPlayers = event.target.value;
   document.getElementById('playerCount').textContent = `Number of Players: ${selectedPlayers}`;
 
   const imageSrc = `./img/${selectedPlayers}p.jpg`; // Construct the image filename
-  document.getElementById('playerImage').src = imageSrc; // Set the image src attribute
+  document.getElementById('teamImage').src = imageSrc; // Set the image src attribute
 });
 
 // Function for toggling the dropdown menu
@@ -34,22 +33,22 @@ window.toggleMenu = toggleMenu;
 
 document.addEventListener('DOMContentLoaded', () => {
   const playerSlider = document.getElementById('playerSlider');
-  const playerImage = document.getElementById('playerImage');
+  const teamImage = document.getElementById('teamImage');
   const playerCount = document.getElementById('playerCount');
   const startButton = document.getElementById('startButton');
   const startingMessage = document.getElementById('startingMessage');
 
-  function updatePlayerImage(value) {
+  function updateTeamImage(value) {
     const imageSrc = `img/${value}p.jpg`;
-    playerImage.src = imageSrc;
+    teamImage.src = imageSrc;
     playerCount.textContent = `Number of Players: ${value}`;
   }
 
-  updatePlayerImage(playerSlider.value);
+  updateTeamImage(playerSlider.value);
 
   playerSlider.addEventListener('input', (event) => {
     const selectedPlayers = event.target.value;
-    updatePlayerImage(selectedPlayers);
+    updateTeamImage(selectedPlayers);
   });
 
   startButton.addEventListener('click', () => {

@@ -68,8 +68,12 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
   grid-gap: 1em;
   margin: 0 2em;
-  border: 1px solid lightblue;
+  border: 1px solid lightblue; /* Apply border to the entire grid */
   padding: 1em;
+}
+
+.page-layout-grid * {
+  border: 1px solid lightblue; /* Add borders to all elements inside the grid */
 }
 
 .page-layout-grid p,
@@ -124,7 +128,7 @@ input[type="range"] {
   margin: 2em auto; /* Centering the image container */
 }
 
-#playerImage {
+#teamImage {
   width: 100%;
   height: auto;
 }
