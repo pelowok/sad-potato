@@ -22,6 +22,7 @@ body {
   margin-left: 2em;
   margin-right: 2em;
 }
+/* Existing CSS styles */
 
 .page-layout-grid {
   display: grid;
@@ -34,9 +35,22 @@ body {
 
 .page-layout-grid p,
 .page-layout-grid input,
+.page-layout-grid label,
 .page-layout-grid .game-container,
 .page-layout-grid button,
 .page-layout-grid .starting-message {
+  width: 100%;
+}
+
+#playerCount {
+  grid-column: span 2;
+}
+
+label[for="playerSlider"] {
+  grid-column: span 2;
+}
+
+input[type="range"] {
   width: 100%;
 }
 
