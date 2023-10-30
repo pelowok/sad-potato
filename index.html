@@ -7,30 +7,31 @@
     <link rel="stylesheet" href="styles.css">
   </head>
 <body>
-  <header>
+  <header class="page-header">
     <h1 class="main-title">Mastermind Heist Game</h1>
-    <div class="game-controls">
-      <label class="game-title">Mastermind Heist</label>
-      <div class="game-menu">
-        <button class="menu-button"><i class="fas fa-cube"></i> Game</button>
-        <div class="dropdown-content">
-          <a href="#">Save</a>
-          <a href="#">Restart</a>
-          <a href="#">Exit</a>
-        </div>
-      </div>
-      <button class="pause-button"><i class="fas fa-pause"></i> Pause</button>
-      <div class="settings-menu">
-        <button class="menu-button"><i class="fas fa-cog"></i> Settings</button>
-        <div class="dropdown-content">
-          <a href="#">Add Player</a>
-          <a href="#">Remove Player</a>
-          <a href="#">Convert Player to NPC...</a>
-          <a href="#">Convert NPC to Player...</a>
-        </div>
+  </header>
+  <div class="game-controls">
+    <label class="game-title">Mastermind Heist</label>
+    <div class="game-menu">
+      <button class="menu-button"><i class="fas fa-cube"></i> Game</button>
+      <div class="dropdown-content">
+        <a href="#">Save</a>
+        <a href="#">Restart</a>
+        <a href="#">Exit</a>
       </div>
     </div>
-  </header>
+    <button class="pause-button"><i class="fas fa-pause"></i> Pause</button>
+    <div class="settings-menu">
+      <button class="menu-button"><i class="fas fa-cog"></i> Settings</button>
+      <div class="dropdown-content">
+        <a href="#">Add Player</a>
+        <a href="#">Remove Player</a>
+        <a href="#">Convert Player to NPC...</a>
+        <a href="#">Convert NPC to Player...</a>
+      </div>
+    </div>
+  </div>
+
 
   <input type="range" min="1" max="7" value="1" class="player-slider" id="playerSlider">
   <div class="game-container" id="gameContainer"></div>
