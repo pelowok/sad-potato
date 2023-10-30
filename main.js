@@ -35,6 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const startButton = document.getElementById('startButton');
   const startingMessage = document.getElementById('startingMessage');
 
+  console.log(teamImage); // Check if the element is successfully retrieved
+
   function updateTeamImage(value) {
     const imageSrc = `img/${value}p.jpg`;
     teamImage.src = imageSrc;
