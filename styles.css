@@ -1,17 +1,29 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+h1, input, button, p, #imageContainer {
+  margin: 10px;
+}
+
 /* Apply styles for the image container div */
 #imageContainer {
   width: 20%;
-  max-width: 200px; /* Adjust max-width as needed */
-  margin: 20px; /* Adding some margin for spacing */
-  border: 1px solid #000; /* Example border for visualization */
-  /* Other styles for the container */
+  max-width: 200px;
+  border: 1px solid #000;
 }
 
 /* Adjust the image inside the container */
 #playerImage {
   width: 100%;
-  min-width: 250px; /* Set minimum width */
-  max-width: 600px; /* Set maximum width */
+  min-width: 250px;
+  max-width: 600px;
   height: auto;
   display: block;
 }
