@@ -29,27 +29,25 @@ window.addEventListener('click', function(event) {
 // Function to initiate the dropdown menu functionality
 window.toggleMenu = toggleMenu;
 
-
 // On DOM Content Load
-
 document.addEventListener('DOMContentLoaded', () => {
   const playerSlider = document.getElementById('playerSlider');
-  const playerImage = document.getElementById('playerImage');
+  const teamImage = document.getElementById('teamImage');
   const playerCount = document.getElementById('playerCount');
   const startButton = document.getElementById('startButton');
   const startingMessage = document.getElementById('startingMessage');
 
-  function updatePlayerImage(value) {
+  function updateTeamImage(value) {
     const imageSrc = `img/${value}p.jpg`;
-    playerImage.src = imageSrc;
+    teamImage.src = imageSrc;
     playerCount.textContent = `Number of Players: ${value}`;
   }
 
-  updatePlayerImage(playerSlider.value);
+  updateTeamImage(playerSlider.value);
 
   playerSlider.addEventListener('input', (event) => {
     const selectedPlayers = event.target.value;
-    updatePlayerImage(selectedPlayers);
+    updateTeamImage(selectedPlayers);
   });
 
   startButton.addEventListener('click', () => {
@@ -61,9 +59,21 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         startingMessage.style.opacity = '0';
         startingMessage.textContent = '';
-      }, 2000);
+
+        setTimeout(() => {
+          document.body.style.transition = 'background-color 1.5s ease';
+          document.body.style.backgroundColor = 'black';
+
+          // Remove content from the Page Layout Grid (PLG)
+          const pageLayoutGrid = document.getElementById('pageLayoutGrid');
+          while (pageLayoutGrid.firstChild) {
+            pageLayoutGrid.removeChild(pageLayoutGrid.firstChild);
+          }
+        }, 3000); // 3 seconds after Start Button activation
+      }, 1500); // 1.5 seconds for the fade to black
     }, 100);
   });
 });
+
 
 
