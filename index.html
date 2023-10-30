@@ -3,19 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <title>Mastermind Heist Game</title>
+  <script src="https://kit.fontawesome.com/c93531e7fe.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Mastermind Heist Game</h1>
-  <input type="range" min="1" max="7" value="1" class="player-slider" id="playerSlider">
-  <button id="startButton">Start Game</button>
-  <div class="game-container" id="gameContainer"></div>
-  <p id="playerCount">Number of Players: 1</p>
-  <div id="imageContainer"> <!-- Image container div -->
-    <img id="playerImage" src="1p.jpg" alt="Player Image"> <!-- Image element to display the player count -->
+  <header class="page-header">
+    <h1 class="main-title">Mastermind Heist Game</h1>
+  </header>
+  <div class="game-controls">
+    <label class="game-title">Mastermind Heist</label>
+    <div class="game-menu">
+      <button class="menu-button" onclick="toggleMenu(this)"><i class="fas fa-cube"></i> Game</button>
+      <div class="dropdown-content">
+        <a href="#">Save</a>
+        <a href="#">Restart</a>
+        <a href="#">Exit</a>
+      </div>
+    </div>
+    <button class="pause-button"><i class="fas fa-pause"></i> Pause</button>
+    <div class="settings-menu">
+      <button class="menu-button" onclick="toggleMenu(this)"><i class="fas fa-cog"></i> Settings</button>
+      <div class="dropdown-content">
+        <a href="#">Add Player</a>
+        <a href="#">Remove Player</a>
+        <a href="#">Convert Player to NPC...</a>
+        <a href="#">Convert NPC to Player...</a>
+      </div>
+    </div>
+  </div>
+  <div class="page-layout-grid" id="pageLayoutGrid">
+    <!-- Content within the Page Layout Grid -->
+    <p id="playerCount">Number of Players: 1</p>
+    <label for="playerSlider">Team Size</label>
+    <input type="range" min="1" max="7" value="1" class="player-slider" id="playerSlider">
+    <div class="game-container" id="gameContainer"></div>
+    <button id="startButton">Start Game</button>
+    <div class="starting-message" id="startingMessage"></div>
+  </div>
+  <div id="imageContainer">
+    <img id="playerImage" src="img/1p.jpg" alt="Player Image">
   </div>
   <script src="main.js" type="module"></script>
 </body>
-
-
 </html>

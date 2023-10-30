@@ -1,29 +1,130 @@
 body {
+  font-size: 14px;
+  margin: 2em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
+}
+
+.page-header {
   margin: 0;
-  font-family: Arial, sans-serif;
+  margin-bottom: 2em;
 }
 
-h1, input, button, p, #imageContainer {
-  margin: 10px;
+.page-header .main-title {
+  margin: 0;
 }
 
-/* Apply styles for the image container div */
+/* GAME CONTROLS */
+
+.game-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+.game-controls .game-menu,
+.game-controls .settings-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.game-controls .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.game-controls .dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.game-controls .menu-button:hover .dropdown-content {
+  display: block;
+}
+
+.game-controls .menu-button:focus .dropdown-content {
+  display: block;
+}
+
+.game-controls .show {
+  display: block;
+}
+
+
+/* PAGE LAYOUT GRID (PLG) */
+/* Existing CSS styles */
+
+.page-layout-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  grid-gap: 1em;
+  margin: 0 2em;
+  border: 1px solid lightblue;
+  padding: 1em;
+}
+
+.page-layout-grid p,
+.page-layout-grid input,
+.page-layout-grid label,
+.page-layout-grid .game-container,
+.page-layout-grid button,
+.page-layout-grid .starting-message {
+  grid-column: span 2; /* Update to span 2 columns */
+}
+
+/* PLAYER COUNT and SLIDER */
+#playerCount {
+  grid-column: span 2;
+}
+
+label[for="playerSlider"] {
+  grid-column: span 2;
+}
+
+input[type="range"] {
+  width: 100%;
+}
+
+/* START controls */
+#startButton {
+  padding: 1em;
+  font-size: 2em;
+  font-weight: bold;
+  border-radius: 5px;
+  display: block;
+  margin: 0 auto; /* Center the button */
+  grid-column: span 2; /* Span all columns */
+}
+
+.starting-message {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 6em;
+  font-weight: bold;
+  color: blue;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
 #imageContainer {
-  width: 20%;
-  max-width: 200px;
-  border: 1px solid #000;
+  width: 30vw; /* 30% of the viewport width */
+  margin: 2em auto; /* Centering the image container */
 }
 
-/* Adjust the image inside the container */
 #playerImage {
   width: 100%;
-  min-width: 250px;
-  max-width: 600px;
   height: auto;
-  display: block;
 }
