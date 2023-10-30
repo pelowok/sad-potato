@@ -8,3 +8,21 @@ document.getElementById('playerSlider').addEventListener('input', (event) => {
   document.getElementById('playerImage').src = imageSrc; // Set the image src attribute
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+  const playerSlider = document.getElementById('playerSlider');
+  const playerImage = document.getElementById('playerImage');
+  const playerCount = document.getElementById('playerCount');
+
+  function updatePlayerImage(value) {
+    const imageSrc = `${value}p.jpg`; // Construct the image filename
+    playerImage.src = imageSrc; // Set the image src attribute
+    playerCount.textContent = `Number of Players: ${value}`;
+  }
+
+  updatePlayerImage(playerSlider.value);
+
+  playerSlider.addEventListener('input', (event) => {
+    const selectedPlayers = event.target.value;
+    updatePlayerImage(selectedPlayers);
+  });
+});
