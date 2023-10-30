@@ -61,6 +61,8 @@ body {
 
 
 /* PAGE LAYOUT GRID (PLG) */
+/* Existing CSS styles */
+
 .page-layout-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
@@ -76,7 +78,7 @@ body {
 .page-layout-grid .game-container,
 .page-layout-grid button,
 .page-layout-grid .starting-message {
-  width: 100%;
+  grid-column: span 2; /* Update to span 2 columns */
 }
 
 /* PLAYER COUNT and SLIDER */
@@ -99,7 +101,8 @@ input[type="range"] {
   font-weight: bold;
   border-radius: 5px;
   display: block;
-  margin: 0 auto;
+  margin: 0 auto; /* Center the button */
+  grid-column: span 2; /* Span all columns */
 }
 
 .starting-message {
