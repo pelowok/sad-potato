@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const playerCount = document.getElementById('playerCount');
 
   function updatePlayerImage(value) {
-    const imageSrc = `${value}p.jpg`; // Construct the image filename
+    const imageSrc = `img/${value}p.jpg`; // Update the image source path to 'img' folder
     playerImage.src = imageSrc; // Set the image src attribute
     playerCount.textContent = `Number of Players: ${value}`;
   }
@@ -26,3 +26,4 @@ document.addEventListener('DOMContentLoaded', () => {
     updatePlayerImage(selectedPlayers);
   });
 });
+
