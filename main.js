@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
       startingMessage.textContent = 'Good luck, everybody.';
       startingMessage.style.display = 'block';
       startingMessage.style.opacity = '1';
+      startingMessage.style.color = 'white'; // Set text color to white
 
       setTimeout(() => {
         startingMessage.style.opacity = '0';
