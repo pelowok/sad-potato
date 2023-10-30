@@ -68,10 +68,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 5000); // 5 seconds after Start Button activation
 
     setTimeout(() => {
+
       startingMessage.textContent = 'Good luck, everybody.';
       startingMessage.style.display = 'block';
       startingMessage.style.opacity = '1';
       startingMessage.style.color = 'white'; // Set text color to white
+      console.log(startingMessage);
 
       setTimeout(() => {
         startingMessage.style.opacity = '0';
