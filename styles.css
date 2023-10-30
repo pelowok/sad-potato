@@ -16,10 +16,29 @@ h1.main-title {
   margin: 0;
 }
 
+.player-slider {
+  width: 50%;
+}
+
+#imageContainer {
+  width: 50vw; /* Set image container to occupy 50% of viewport width */
+  max-width: 50vw;
+  border: 1px solid #000;
+  overflow: hidden; /* Ensure proper image display within the container */
+  position: relative; /* Allow proper positioning for the image */
+}
+
+#playerImage {
+  width: 100%; /* Occupying the entire width of the container */
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+  object-fit: cover; /* Maintain 1:1 aspect ratio */
+}
+
 #startButton {
-  padding: 3em; /* Set internal padding */
-  font-size: 2em; /* Increase font size */
-  margin-top: auto; /* Move the button to the bottom of the page */
+  padding: 3em;
+  font-size: 2em;
+  margin-top: auto;
 }
 
 .starting-message {
@@ -32,5 +51,6 @@ h1.main-title {
   font-size: 6em;
   font-weight: bold;
   opacity: 0;
+  color: white; /* Set text color to white */
   transition: opacity 1s;
 }
