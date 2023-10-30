@@ -65,6 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       console.log('Start the game after 5 seconds');
       // Add your game start logic here after 5 seconds
+        // Remove the image container after the game starts
+        const imageContainer = document.getElementById('imageContainer');
+        imageContainer.remove();
     }, 5000); // 5 seconds after Start Button activation
 
     setTimeout(() => {
