@@ -65,3 +65,27 @@ body {
 .game-controls .dropdown-content:hover {
   display: block;
 }
+
+/* adding CSS grid */
+
+.page-layout-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 1em;
+  margin: 0 2em;
+}
+
+/* Additional styling for the items within the Page Layout Grid */
+.page-layout-grid p,
+.page-layout-grid input,
+.page-layout-grid .game-container,
+.page-layout-grid #imageContainer,
+.page-layout-grid button,
+.page-layout-grid .starting-message {
+  width: 100%;
+}
+
+.page-layout-grid #imageContainer img {
+  width: 100%;
+  height: auto;
+}
