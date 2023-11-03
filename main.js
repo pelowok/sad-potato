@@ -86,13 +86,19 @@ function getRandomInt(min, max) {
     return name;
   }
 
-  function addPlayerImage(playerBoardIndex) {
+  function addPlayerImage(playerBoardIndex, playerBoardName) {
     const playerBoard = document.getElementsByClassName('player-board')[playerBoardIndex];
     const image = document.createElement('img');
-    image.src = `./img/portraits/${names[playerBoardIndex]}.jpg`; // Assuming image names are identical to the names in the 'names' array
+
+    console.log(playerBoardIndex);
+
+    image.src = `./img/portraits/${playerBoardName}.jpg`; // Assuming image names are identical to the names in the 'names' array
+
+    console.log(playerBoardName);
+
     image.width = 386;
     image.height = 386;
-    playerBoard.insertBefore(image, playerBoard.secondChild);
+    playerBoard.insertBefore(image, playerBoard.firstChild);
   }
 
 // Function to create player boards with random attributes
@@ -136,12 +142,15 @@ function createPlayerBoards() {
       `;
 
       container.appendChild(playerBoard);
+      addPlayerImage(i-1, playerName);
   }
 
   // Use addPlayerImage function for each player board
-  for (let i = 0; i < numberOfPlayers; i++) {
-    addPlayerImage(i);
-  }
+
+  //for (let i = 0; i < numberOfPlayers; i++) {
+  //  addPlayerImage(i);
+  //}
+
 
   const playerBoards = document.querySelectorAll('.player-board');
   const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Violet', 'Black'];
