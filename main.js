@@ -50,6 +50,67 @@ document.addEventListener('DOMContentLoaded', () => {
     updateTeamImage(selectedPlayers);
   });
 
+  // Function to generate a random integer within a range
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// Function to generate a random name for players
+function getRandomName() {
+  // This is just an example; you can use a more extensive name generation system
+  const names = ["Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Henry"];
+  return names[Math.floor(Math.random() * names.length)];
+}
+
+// Function to create player boards with random attributes
+function createPlayerBoards() {
+  const container = document.getElementById("playerBoardsContainer");
+  const playerSlider = document.getElementById("playerSlider");
+  const numberOfPlayers = parseInt(playerSlider.value); // Get the value from the player slider
+
+  container.innerHTML = ''; // Clear the container
+
+  for (let i = 1; i <= numberOfPlayers; i++) {
+      const playerBoard = document.createElement("div");
+      playerBoard.classList.add("player-board");
+
+      // Generate random name and attributes for each player
+      const playerName = getRandomName();
+      const brains = getRandomInt(3, 6);
+      const smarts = getRandomInt(3, 6);
+      const wits = getRandomInt(3, 6);
+      const charm = getRandomInt(3, 6);
+
+      // HTML content for the player board
+      playerBoard.innerHTML = `
+          <h3>${playerName}</h3>
+          <div class="attribute">
+              <span>Brains:</span>
+              <span class="brains-value">${brains}</span>
+          </div>
+          <div class="attribute">
+              <span>Smarts:</span>
+              <span class="smarts-value">${smarts}</span>
+          </div>
+          <div class="attribute">
+              <span>Wits:</span>
+              <span class="wits-value">${wits}</span>
+          </div>
+          <div class="attribute">
+              <span>Charm:</span>
+              <span class="charm-value">${charm}</span>
+          </div>
+      `;
+
+      container.appendChild(playerBoard);
+  }
+}
+
+// Event listener for the player slider
+document.getElementById('playerSlider').addEventListener('input', createPlayerBoards);
+
+
+
   startButton.addEventListener('click', () => {
     // Fade all elements to black and remove content from PLG after immediate activation
     document.body.style.transition = 'background-color 1.5s ease';
@@ -83,6 +144,10 @@ document.addEventListener('DOMContentLoaded', () => {
         startingMessage.textContent = '';
       }, 3000); // 3 seconds for the message to fade out
     }, 1500); // 1.5 seconds after Start Button activation for Start Message
+
+    // Call the function with the desired number of players
+    // Initial creation of player boards
+    createPlayerBoards();
   });
 
 });
