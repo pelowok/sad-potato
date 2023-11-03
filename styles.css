@@ -147,6 +147,7 @@ input[type="range"] {
 
 /* Styling for the player board */
 .player-board {
+  position: relative; /* Establishes a positioning context for child elements */
   max-width: 100%;
   width: 388px;
   padding: 10px;
@@ -200,4 +201,5 @@ input[type="range"] {
   right: 0;
   border: 1px solid black;
   border-radius: 5px;
+  /* Apply color using background or another styling attribute */
 }
