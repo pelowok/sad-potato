@@ -67,15 +67,16 @@ function getRandomInt(min, max) {
     "Adela", "Aidan", "Alessia", "Ami", "Amira",
     "Anton", "Anya", "Audrey", "Celine", "Charlie",
     "David", "Elena", "Emre", "Eren", "Eve",
-    "Frank", "Grace", "Hanna", "Henry", "Idris", "Isaac",
-    "Ivan",  "Julia", "Kevin", "Leyla", "Liam",
-    "Lina", "Luca", "Lucio", "Luna", "Mateo",
-    "Maya", "Milan", "Mohammad", "Nadia",
-    "Nana", "Nathan", "Nikki", "Noah", "Oliver", "Olivia",
-    "Oscar", "Paul", "Quinn", "Rachel", "Sakura",
-    "Sam", "Sebastian", "Selena", "Sofia", "Sora",
-    "Theo", "Tina", "Ursula", "Victor", "Wendy",
-    "Xander", "Yasmine", "Yolanda", "Yvonne", "Zara", "Zed"
+    "Frank", "Grace", "Hanna", "Henry", "Idris",
+    "Isaac", "Ivan",  "Julia", "Kevin", "Leyla",
+    "Liam", "Lina", "Luca", "Lucio", "Luna",
+    "Mateo", "Maya", "Milan", "Mohammad", "Nadia",
+    "Nana", "Nathan", "Nikki", "Noah", "Oliver",
+    "Olivia", "Oscar", "Paul", "Quinn", "Rachel",
+    "Sakura", "Sam", "Sebastian", "Selena", "Sofia",
+    "Sora", "Theo", "Tina", "Ursula", "Victor",
+    "Wendy", "Xander", "Yasmine", "Yolanda", "Yvonne",
+    "Zara", "Zed", "Zev", "Zuzu"
   ];
 
   function getRandomName() {
