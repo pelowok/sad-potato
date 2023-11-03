@@ -54,7 +54,12 @@ function getRandomInt(min, max) {
 }
 
   // Function to generate a random name for players
-  const names = ["Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Henry"];
+  const names = [
+    "Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Henry",
+    "Isaac", "Julia", "Kevin", "Lily", "Mia", "Nathan", "Olivia", "Paul",
+    "Quinn", "Rachel", "Sam", "Tina", "Ursula", "Victor", "Wendy", "Xander",
+    "Yvonne", "Zach"
+  ];
 
   function getRandomName() {
     if (names.length === 0) return "No more names";
