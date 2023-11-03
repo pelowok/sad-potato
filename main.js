@@ -27,6 +27,15 @@ window.addEventListener('click', function(event) {
 // Function to initiate the dropdown menu functionality
 window.toggleMenu = toggleMenu;
 
+// Assuming "restartGame" is the ID of the Restart menu option
+const restartOption = document.getElementById('restartGame');
+
+restartOption.addEventListener('click', () => {
+  // Perform actions to restart the app here
+  location.reload(); // Reload the page to simulate a restart
+});
+
+
 // On DOM Content Load
 document.addEventListener('DOMContentLoaded', () => {
   const playerSlider = document.getElementById('playerSlider');
