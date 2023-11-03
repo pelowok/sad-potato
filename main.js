@@ -55,24 +55,32 @@ function getRandomInt(min, max) {
 
   // Function to generate a random name for players
   const names = [
-    "Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Henry",
-    "Isaac", "Julia", "Kevin", "Lily", "Mia", "Nathan", "Olivia", "Paul",
-    "Quinn", "Rachel", "Sam", "Tina", "Ursula", "Victor", "Wendy", "Xander",
-    "Yvonne", "Zach", "Sakura", "Hiroshi", "Aiko", "Yuki", "Daiki", "Yui", "Hikari", "Haruto",
-    "Koharu", "Ren", "Aoi", "Riko", "Kaito", "Nana", "Sora", "Kokoro",
-    "Rin", "Asuka", "Taichi", "Mayu", "Satoshi", "Mei", "Kazuki", "Ayumi",
-    "Hayato", "Ami", "Elena", "Matteo", "Luna", "Emre", "Sofia", "Milan", "Amina", "Sebastian",
-    "Alessia", "Levent", "Amira", "Luca", "Yasmine", "Anton", "Celine", "Liam",
-    "Adela", "Noah", "Selena", "David", "Leyla", "Lucas", "Sara", "Oscar",
-    "Nadia", "Oliver", "Mia", "Leo", "Lina", "Aidan", "Zara", "Theo", "Ayla",
-    "Sophie", "Ege", "Hanna", "Eren", "Elif", "Gustav", "Nina", "Elif", "Elio",
-    "Ella", "Aron", "Lara", "Milo", "Emilia", "Kai", "Maya", "Jonas", "Livia",
-    "Adriano", "Bianca", "Cristiano", "Dario", "Elena", "Fabrizio",
-    "Gianna", "Hugo", "Isabella", "Javier", "Katarina", "Lorenzo",
-    "Marisol", "Nikolai", "Oksana", "Paolo", "Quintina", "Rafael",
-    "Sofia", "Teodoro", "Ursula", "Vittorio", "Wanda", "Xavier",
-    "Yolanda", "Zoran"
+    "Alice", "Bob", "Charlie", "David", "Eve",
+    "Frank", "Grace", "Henry", "Isaac", "Julia",
+    "Kevin", "Lily", "Mia", "Nathan", "Olivia",
+    "Paul", "Quinn", "Rachel", "Sam", "Tina",
+    "Ursula", "Victor", "Wendy", "Xander", "Yvonne",
+    "Zach", "Ami", "Elena", "Matteo", "Luna",
+    "Emre", "Sofia", "Milan", "Amina", "Sebastian",
+    "Alessia", "Levent", "Amira", "Luca", "Yasmine",
+    "Anton", "Celine", "Liam", "Adela", "Noah",
+    "Selena", "David", "Leyla", "Lucas", "Sara",
+    "Oscar", "Nadia", "Oliver", "Mia", "Leo",
+    "Lina", "Aidan", "Zara", "Theo", "Ayla",
+    "Sophie", "Ege", "Hanna", "Eren"
   ];
+  /*
+  , "Elif",
+    "Gustav", "Nina", "Elif", "Elio", "Ella",
+    "Aron", "Lara", "Milo", "Emilia", "Kai",
+    "Maya", "Jonas", "Livia", "Adriano", "Bianca",
+    "Cristiano", "Dario", "Elena", "Fabrizio", "Gianna",
+    "Hugo", "Isabella", "Javier", "Katarina", "Lorenzo",
+    "Marisol", "Nikolai", "Oksana", "Paolo", "Quintina",
+    "Rafael", "Sofia", "Teodoro", "Ursula", "Vittorio",
+    "Wanda", "Xavier", "Yolanda", "Zoran", "Leandro"
+];
+*/
 
   function getRandomName() {
     if (names.length === 0) return "No more names";
@@ -80,6 +88,15 @@ function getRandomInt(min, max) {
     const name = names[randomIndex];
     names.splice(randomIndex, 1); // Remove the used name from the array
     return name;
+  }
+
+  function addPlayerImage(playerBoardIndex) {
+    const playerBoard = document.getElementsByClassName('player-board')[playerBoardIndex];
+    const image = document.createElement('img');
+    image.src = `./img/portraits/${names[playerBoardIndex]}.jpg`; // Assuming image names are identical to the names in the 'names' array
+    image.width = 386;
+    image.height = 386;
+    playerBoard.insertBefore(image, playerBoard.firstChild);
   }
 
 // Function to create player boards with random attributes
@@ -123,6 +140,11 @@ function createPlayerBoards() {
       `;
 
       container.appendChild(playerBoard);
+  }
+
+  // Use addPlayerImage function for each player board
+  for (let i = 0; i < numberOfPlayers; i++) {
+    addPlayerImage(i);
   }
 }
 
