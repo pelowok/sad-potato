@@ -142,6 +142,26 @@ function createPlayerBoards() {
   for (let i = 0; i < numberOfPlayers; i++) {
     addPlayerImage(i);
   }
+
+  const playerBoards = document.querySelectorAll('.player-board');
+const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Violet', 'Black'];
+let colorIndex = 0;
+
+playerBoards.forEach((board, index) => {
+  const colorSquare = document.createElement('div');
+  colorSquare.classList.add('color-square');
+  colorSquare.style.backgroundColor = colors[colorIndex];
+
+  // Reset the color index when reaching the end of the colors array
+  if (colorIndex === colors.length - 1) {
+    colorIndex = 0;
+  } else {
+    colorIndex++;
+  }
+
+  board.appendChild(colorSquare);
+});
+
 }
 
   // Event listener for the player slider
