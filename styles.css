@@ -138,9 +138,19 @@ input[type="range"] {
 }
 
 /* CSS to style Player Boards */
+/* In your CSS file */
+#playerBoardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Adjust the gap as needed */
+}
+
 .player-board {
-  border: 1px solid #333;
+  flex: 1 0 200px; /* Set a fixed width for each player board */
+  border: 1px solid white; /* Add borders or styling for visual clarity */
   padding: 10px;
+}
+
   margin: 10px;
   width: 200px;
 }
