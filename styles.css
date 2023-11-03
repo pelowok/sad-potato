@@ -147,10 +147,8 @@ input[type="range"] {
 
 .player-board {
   flex: 1 0 200px; /* Set a fixed width for each player board */
-  border: 1px solid white; /* Add borders or styling for visual clarity */
+  border: 1px solid blue; /* Add borders or styling for visual clarity */
   padding: 10px;
-}
-
   margin: 10px;
   width: 200px;
 }
