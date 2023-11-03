@@ -136,3 +136,44 @@ input[type="range"] {
   width: 100%;
   height: auto;
 }
+
+/* CSS to style Player Boards */
+/* In your CSS file */
+#playerBoardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Adjust the gap as needed */
+}
+
+.player-board {
+  flex: 1 0 100px; /* Set a fixed width for each player board */
+  border: 1px solid blue; /* Add borders or styling for visual clarity */
+  padding: 10px;
+  margin: 10px;
+  width: 200px;
+}
+
+.player-board h3 {
+  margin: 0;
+  text-align: center;
+}
+
+.attribute {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+
+.attribute span {
+  font-weight: bold;
+}
+
+/* Example styling for values (can be adjusted) */
+.brains-value,
+.smarts-value,
+.wits-value,
+.charm-value {
+  background-color: #f2f2f2;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
