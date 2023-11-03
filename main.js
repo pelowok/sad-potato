@@ -65,17 +65,18 @@ function getRandomInt(min, max) {
   // Function to generate a random name for players
   const names = [
     "Adela", "Aidan", "Alessia", "Ami", "Amira",
-    "Anton", "Auntie", "Ayla", "Banoub","Celine", "Charlie",
+    "Anton", "Anya", "Audrey", "Celine", "Charlie",
     "David", "Elena", "Emre", "Eren", "Eve",
-    "Frank", "Grace", "Hanna", "Henry", "Isaac",
-    "Ivan",  "Julia", "Kevin", "Leyla", "Liam",
-    "Lina", "Luca", "Lucas", "Luna", "Mateo",
-    "Maya", "Mia", "Milan", "Mohammad", "Nadia",
-    "Nana", "Nathan", "Noah", "Oliver", "Olivia",
-    "Oscar", "Paul", "Quinn", "Rachel", "Sakura",
-    "Sam", "Sebastian", "Selena", "Sofia", "Sora",
-    "Theo", "Tina", "Ursula", "Victor", "Wendy",
-    "Xander", "Yasmine", "Yolanda", "Yvonne", "Zach", "Zara"
+    "Frank", "Grace", "Hanna", "Henry", "Idris",
+    "Isaac", "Ivan",  "Julia", "Kevin", "Leyla",
+    "Liam", "Lina", "Luca", "Lucio", "Luna",
+    "Mateo", "Maya", "Milan", "Mohammad", "Nadia",
+    "Nana", "Nathan", "Nikki", "Noah", "Oliver",
+    "Olivia", "Oscar", "Paul", "Quinn", "Rachel",
+    "Sakura", "Sam", "Sebastian", "Selena", "Sofia",
+    "Sora", "Theo", "Tina", "Ursula", "Victor",
+    "Wendy", "Xander", "Yasmine", "Yolanda", "Yvonne",
+    "Zara", "Zed", "Zev", "Zuzu"
   ];
 
   function getRandomName() {
@@ -86,13 +87,19 @@ function getRandomInt(min, max) {
     return name;
   }
 
-  function addPlayerImage(playerBoardIndex) {
+  function addPlayerImage(playerBoardIndex, playerBoardName) {
     const playerBoard = document.getElementsByClassName('player-board')[playerBoardIndex];
     const image = document.createElement('img');
-    image.src = `./img/portraits/${names[playerBoardIndex]}.jpg`; // Assuming image names are identical to the names in the 'names' array
+
+    console.log(playerBoardIndex);
+
+    image.src = `./img/portraits/${playerBoardName}.jpg`; // Assuming image names are identical to the names in the 'names' array
+
+    console.log(playerBoardName);
+
     image.width = 386;
     image.height = 386;
-    playerBoard.insertBefore(image, playerBoard.secondChild);
+    playerBoard.insertBefore(image, playerBoard.firstChild);
   }
 
 // Function to create player boards with random attributes
@@ -136,12 +143,15 @@ function createPlayerBoards() {
       `;
 
       container.appendChild(playerBoard);
+      addPlayerImage(i-1, playerName);
   }
 
   // Use addPlayerImage function for each player board
-  for (let i = 0; i < numberOfPlayers; i++) {
-    addPlayerImage(i);
-  }
+
+  //for (let i = 0; i < numberOfPlayers; i++) {
+  //  addPlayerImage(i);
+  //}
+
 
   const playerBoards = document.querySelectorAll('.player-board');
   const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Violet', 'Black'];
