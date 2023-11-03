@@ -145,13 +145,23 @@ input[type="range"] {
   gap: 20px; /* Adjust the gap as needed */
 }
 
+/* Assuming your player board class is named 'player-board' */
 .player-board {
-  flex: 1 0 386px; /* Set a fixed width for each player board */
-  border: 1px solid blue; /* Add borders or styling for visual clarity */
-  padding: 10px;
-  margin: 10px;
-  width: 200px;
+  max-width: 100%; /* Allows the player board to expand or contract based on its container */
+  width: 388px; /* Default width for the player board */
+  padding: 10px; /* Padding around the player board */
+  box-sizing: border-box; /* Includes padding and border in the width and height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+.player-board img {
+  width: calc(100% - 20px); /* Adjusts the width considering the padding (10px on each side) */
+  height: auto;
+  object-fit: cover; /* Ensures the image covers the entire area without stretching */
+}
+
 
 .player-board h3 {
   margin: 0;
