@@ -27,6 +27,15 @@ window.addEventListener('click', function(event) {
 // Function to initiate the dropdown menu functionality
 window.toggleMenu = toggleMenu;
 
+// Assuming "restartGame" is the ID of the Restart menu option
+const restartOption = document.getElementById('restartGame');
+
+restartOption.addEventListener('click', () => {
+  // Perform actions to restart the app here
+  location.reload(); // Reload the page to simulate a restart
+});
+
+
 // On DOM Content Load
 document.addEventListener('DOMContentLoaded', () => {
   const playerSlider = document.getElementById('playerSlider');
@@ -55,10 +64,18 @@ function getRandomInt(min, max) {
 
   // Function to generate a random name for players
   const names = [
-    "Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Henry",
-    "Isaac", "Julia", "Kevin", "Lily", "Mia", "Nathan", "Olivia", "Paul",
-    "Quinn", "Rachel", "Sam", "Tina", "Ursula", "Victor", "Wendy", "Xander",
-    "Yvonne", "Zach"
+    "Adela", "Aidan", "Alessia", "Ami", "Amira",
+    "Anton", "Auntie", "Ayla", "Banoub","Celine", "Charlie",
+    "David", "Elena", "Emre", "Eren", "Eve",
+    "Frank", "Grace", "Hanna", "Henry", "Isaac",
+    "Ivan",  "Julia", "Kevin", "Leyla", "Liam",
+    "Lina", "Luca", "Lucas", "Luna", "Mateo",
+    "Maya", "Mia", "Milan", "Mohammad", "Nadia",
+    "Nana", "Nathan", "Noah", "Oliver", "Olivia",
+    "Oscar", "Paul", "Quinn", "Rachel", "Sakura",
+    "Sam", "Sebastian", "Selena", "Sofia", "Sora",
+    "Theo", "Tina", "Ursula", "Victor", "Wendy",
+    "Xander", "Yasmine", "Yolanda", "Yvonne", "Zach", "Zara"
   ];
 
   function getRandomName() {
@@ -67,6 +84,15 @@ function getRandomInt(min, max) {
     const name = names[randomIndex];
     names.splice(randomIndex, 1); // Remove the used name from the array
     return name;
+  }
+
+  function addPlayerImage(playerBoardIndex) {
+    const playerBoard = document.getElementsByClassName('player-board')[playerBoardIndex];
+    const image = document.createElement('img');
+    image.src = `./img/portraits/${names[playerBoardIndex]}.jpg`; // Assuming image names are identical to the names in the 'names' array
+    image.width = 386;
+    image.height = 386;
+    playerBoard.insertBefore(image, playerBoard.secondChild);
   }
 
 // Function to create player boards with random attributes
@@ -111,7 +137,32 @@ function createPlayerBoards() {
 
       container.appendChild(playerBoard);
   }
-}
+
+  // Use addPlayerImage function for each player board
+  for (let i = 0; i < numberOfPlayers; i++) {
+    addPlayerImage(i);
+  }
+
+  const playerBoards = document.querySelectorAll('.player-board');
+  const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Violet', 'Black'];
+  let colorIndex = 0;
+
+  playerBoards.forEach((board, index) => {
+    const colorSquare = document.createElement('div');
+    colorSquare.classList.add('color-square');
+    colorSquare.style.backgroundColor = colors[colorIndex];
+
+    // Reset the color index when reaching the end of the colors array
+    if (colorIndex === colors.length - 1) {
+      colorIndex = 0;
+    } else {
+      colorIndex++;
+    }
+
+    board.appendChild(colorSquare);
+  });
+
+  }
 
   // Event listener for the player slider
   //document.getElementById('playerSlider').addEventListener('input', createPlayerBoards);

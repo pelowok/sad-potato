@@ -12,6 +12,16 @@
   </header>
   <div class="game-controls">
     <label class="game-title">Mastermind Heist</label>
+
+    <div class="game-menu">
+      <button class="menu-button" onclick="toggleMenu(this)"><i class="fas fa-cube"></i> Game</button>
+      <div class="dropdown-content">
+        <a href="#" id="saveGame">Save</a>
+        <a href="#" id="restartGame">Restart</a>
+        <a href="#" id="exitGame">Exit</a>
+      </div>
+    </div>
+    <!--
     <div class="game-menu">
       <button class="menu-button" onclick="toggleMenu(this)"><i class="fas fa-cube"></i> Game</button>
       <div class="dropdown-content">
@@ -20,6 +30,8 @@
         <a href="#">Exit</a>
       </div>
     </div>
+  -->
+
     <button class="pause-button"><i class="fas fa-pause"></i> Pause</button>
     <div class="settings-menu">
       <button class="menu-button" onclick="toggleMenu(this)"><i class="fas fa-cog"></i> Settings</button>
