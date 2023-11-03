@@ -92,7 +92,7 @@ function getRandomInt(min, max) {
     image.src = `./img/portraits/${names[playerBoardIndex]}.jpg`; // Assuming image names are identical to the names in the 'names' array
     image.width = 386;
     image.height = 386;
-    playerBoard.insertBefore(image, playerBoard.firstChild);
+    playerBoard.insertBefore(image, playerBoard.secondChild);
   }
 
 // Function to create player boards with random attributes
