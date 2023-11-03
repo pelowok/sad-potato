@@ -58,7 +58,20 @@ function getRandomInt(min, max) {
     "Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Henry",
     "Isaac", "Julia", "Kevin", "Lily", "Mia", "Nathan", "Olivia", "Paul",
     "Quinn", "Rachel", "Sam", "Tina", "Ursula", "Victor", "Wendy", "Xander",
-    "Yvonne", "Zach"
+    "Yvonne", "Zach", "Sakura", "Hiroshi", "Aiko", "Yuki", "Daiki", "Yui", "Hikari", "Haruto",
+    "Koharu", "Ren", "Aoi", "Riko", "Kaito", "Nana", "Sora", "Kokoro",
+    "Rin", "Asuka", "Taichi", "Mayu", "Satoshi", "Mei", "Kazuki", "Ayumi",
+    "Hayato", "Ami", "Elena", "Matteo", "Luna", "Emre", "Sofia", "Milan", "Amina", "Sebastian",
+    "Alessia", "Levent", "Amira", "Luca", "Yasmine", "Anton", "Celine", "Liam",
+    "Adela", "Noah", "Selena", "David", "Leyla", "Lucas", "Sara", "Oscar",
+    "Nadia", "Oliver", "Mia", "Leo", "Lina", "Aidan", "Zara", "Theo", "Ayla",
+    "Sophie", "Ege", "Hanna", "Eren", "Elif", "Gustav", "Nina", "Elif", "Elio",
+    "Ella", "Aron", "Lara", "Milo", "Emilia", "Kai", "Maya", "Jonas", "Livia",
+    "Adriano", "Bianca", "Cristiano", "Dario", "Elena", "Fabrizio",
+    "Gianna", "Hugo", "Isabella", "Javier", "Katarina", "Lorenzo",
+    "Marisol", "Nikolai", "Oksana", "Paolo", "Quintina", "Rafael",
+    "Sofia", "Teodoro", "Ursula", "Vittorio", "Wanda", "Xavier",
+    "Yolanda", "Zoran"
   ];
 
   function getRandomName() {
