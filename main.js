@@ -65,17 +65,17 @@ function getRandomInt(min, max) {
   // Function to generate a random name for players
   const names = [
     "Adela", "Aidan", "Alessia", "Ami", "Amira",
-    "Anton", "Auntie", "Ayla", "Banoub","Celine", "Charlie",
+    "Anton", "Anya", "Audrey", "Celine", "Charlie",
     "David", "Elena", "Emre", "Eren", "Eve",
-    "Frank", "Grace", "Hanna", "Henry", "Isaac",
+    "Frank", "Grace", "Hanna", "Henry", "Idris", "Isaac",
     "Ivan",  "Julia", "Kevin", "Leyla", "Liam",
-    "Lina", "Luca", "Lucas", "Luna", "Mateo",
-    "Maya", "Mia", "Milan", "Mohammad", "Nadia",
-    "Nana", "Nathan", "Noah", "Oliver", "Olivia",
+    "Lina", "Luca", "Lucio", "Luna", "Mateo",
+    "Maya", "Milan", "Mohammad", "Nadia",
+    "Nana", "Nathan", "Nikki", "Noah", "Oliver", "Olivia",
     "Oscar", "Paul", "Quinn", "Rachel", "Sakura",
     "Sam", "Sebastian", "Selena", "Sofia", "Sora",
     "Theo", "Tina", "Ursula", "Victor", "Wendy",
-    "Xander", "Yasmine", "Yolanda", "Yvonne", "Zach", "Zara"
+    "Xander", "Yasmine", "Yolanda", "Yvonne", "Zara", "Zed"
   ];
 
   function getRandomName() {
