@@ -144,25 +144,25 @@ function createPlayerBoards() {
   }
 
   const playerBoards = document.querySelectorAll('.player-board');
-const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Violet', 'Black'];
-let colorIndex = 0;
+  const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Violet', 'Black'];
+  let colorIndex = 0;
 
-playerBoards.forEach((board, index) => {
-  const colorSquare = document.createElement('div');
-  colorSquare.classList.add('color-square');
-  colorSquare.style.backgroundColor = colors[colorIndex];
+  playerBoards.forEach((board, index) => {
+    const colorSquare = document.createElement('div');
+    colorSquare.classList.add('color-square');
+    colorSquare.style.backgroundColor = colors[colorIndex];
 
-  // Reset the color index when reaching the end of the colors array
-  if (colorIndex === colors.length - 1) {
-    colorIndex = 0;
-  } else {
-    colorIndex++;
+    // Reset the color index when reaching the end of the colors array
+    if (colorIndex === colors.length - 1) {
+      colorIndex = 0;
+    } else {
+      colorIndex++;
+    }
+
+    board.appendChild(colorSquare);
+  });
+
   }
-
-  board.appendChild(colorSquare);
-});
-
-}
 
   // Event listener for the player slider
   //document.getElementById('playerSlider').addEventListener('input', createPlayerBoards);
