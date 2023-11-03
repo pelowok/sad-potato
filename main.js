@@ -35,9 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const startButton = document.getElementById('startButton');
   const startingMessage = document.getElementById('startingMessage');
 
-
-  console.log(teamImage); // Check if the element is successfully retrieved
-
   function updateTeamImage(value) {
     const imageSrc = `img/${value}p.jpg`;
     teamImage.src = imageSrc;
@@ -108,17 +105,19 @@ function createPlayerBoards() {
 }
 
   // Event listener for the player slider
-  document.getElementById('playerSlider').addEventListener('input', createPlayerBoards);
+  //document.getElementById('playerSlider').addEventListener('input', createPlayerBoards);
 
   startButton.addEventListener('click', () => {
+    // Initial creation of player boards
+    createPlayerBoards();
+
     // remove content from PLG after immediate activation
     const pageLayoutGrid = document.getElementById('pageLayoutGrid');
     while (pageLayoutGrid.firstChild) {
       pageLayoutGrid.removeChild(pageLayoutGrid.firstChild);
     }
 
-    // Initial creation of player boards
-     createPlayerBoards();
+
 
     const imageContainer = document.getElementById('imageContainer');
     imageContainer.remove();
