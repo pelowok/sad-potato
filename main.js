@@ -107,38 +107,27 @@ function createPlayerBoards() {
   }
 }
 
-// Event listener for the player slider
-document.getElementById('playerSlider').addEventListener('input', createPlayerBoards);
-
-
+  // Event listener for the player slider
+  document.getElementById('playerSlider').addEventListener('input', createPlayerBoards);
 
   startButton.addEventListener('click', () => {
-    // Fade all elements to black and remove content from PLG after immediate activation
-    document.body.style.transition = 'background-color 1.5s ease';
-    document.body.style.backgroundColor = 'black';
+    // remove content from PLG after immediate activation
+    const pageLayoutGrid = document.getElementById('pageLayoutGrid');
+    while (pageLayoutGrid.firstChild) {
+      pageLayoutGrid.removeChild(pageLayoutGrid.firstChild);
+    }
 
-    setTimeout(() => {
-      const pageLayoutGrid = document.getElementById('pageLayoutGrid');
-      while (pageLayoutGrid.firstChild) {
-        pageLayoutGrid.removeChild(pageLayoutGrid.firstChild);
-      }
-    }, 1500); // 1.5 seconds for the fade to black
+    // Initial creation of player boards
+     createPlayerBoards();
 
-    setTimeout(() => {
-      console.log('Start the game after 5 seconds');
-      // Add your game start logic here after 5 seconds
-        // Remove the image container after the game starts
-        const imageContainer = document.getElementById('imageContainer');
-        imageContainer.remove();
-    }, 5000); // 5 seconds after Start Button activation
+    const imageContainer = document.getElementById('imageContainer');
+    imageContainer.remove();
 
     setTimeout(() => {
 
       startingMessage.textContent = 'Good luck, everybody.';
       startingMessage.style.display = 'block';
       startingMessage.style.opacity = '1';
-      startingMessage.style.color = 'white'; // Set text color to white
-      console.log(startingMessage);
 
       setTimeout(() => {
         startingMessage.style.opacity = '0';
@@ -146,9 +135,6 @@ document.getElementById('playerSlider').addEventListener('input', createPlayerBo
       }, 3000); // 3 seconds for the message to fade out
     }, 1500); // 1.5 seconds after Start Button activation for Start Message
 
-    // Call the function with the desired number of players
-    // Initial creation of player boards
-    createPlayerBoards();
   });
 
 });
