@@ -53,12 +53,16 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// Function to generate a random name for players
-function getRandomName() {
-  // This is just an example; you can use a more extensive name generation system
+  // Function to generate a random name for players
   const names = ["Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Henry"];
-  return names[Math.floor(Math.random() * names.length)];
-}
+
+  function getRandomName() {
+    if (names.length === 0) return "No more names";
+    const randomIndex = Math.floor(Math.random() * names.length);
+    const name = names[randomIndex];
+    names.splice(randomIndex, 1); // Remove the used name from the array
+    return name;
+  }
 
 // Function to create player boards with random attributes
 function createPlayerBoards() {
