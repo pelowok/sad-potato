@@ -55,32 +55,19 @@ function getRandomInt(min, max) {
 
   // Function to generate a random name for players
   const names = [
-    "Alice", "Bob", "Charlie", "David", "Eve",
-    "Frank", "Grace", "Henry", "Isaac", "Julia",
-    "Kevin", "Lily", "Mia", "Nathan", "Olivia",
-    "Paul", "Quinn", "Rachel", "Sam", "Tina",
-    "Ursula", "Victor", "Wendy", "Xander", "Yvonne",
-    "Zach", "Ami", "Elena", "Matteo", "Luna",
-    "Emre", "Sofia", "Milan", "Amina", "Sebastian",
-    "Alessia", "Levent", "Amira", "Luca", "Yasmine",
-    "Anton", "Celine", "Liam", "Adela", "Noah",
-    "Selena", "David", "Leyla", "Lucas", "Sara",
-    "Oscar", "Nadia", "Oliver", "Mia", "Leo",
-    "Lina", "Aidan", "Zara", "Theo", "Ayla",
-    "Sophie", "Ege", "Hanna", "Eren"
+    "Adela", "Aidan", "Alessia", "Ami", "Amira",
+    "Anton", "Auntie", "Ayla", "Banoub","Celine", "Charlie",
+    "David", "Elena", "Emre", "Eren", "Eve",
+    "Frank", "Grace", "Hanna", "Henry", "Isaac",
+    "Ivan",  "Julia", "Kevin", "Leyla", "Liam",
+    "Lina", "Luca", "Lucas", "Luna", "Mateo",
+    "Maya", "Mia", "Milan", "Mohammad", "Nadia",
+    "Nana", "Nathan", "Noah", "Oliver", "Olivia",
+    "Oscar", "Paul", "Quinn", "Rachel", "Sakura",
+    "Sam", "Sebastian", "Selena", "Sofia", "Sora",
+    "Theo", "Tina", "Ursula", "Victor", "Wendy",
+    "Xander", "Yasmine", "Yolanda", "Yvonne", "Zach", "Zara"
   ];
-  /*
-  , "Elif",
-    "Gustav", "Nina", "Elif", "Elio", "Ella",
-    "Aron", "Lara", "Milo", "Emilia", "Kai",
-    "Maya", "Jonas", "Livia", "Adriano", "Bianca",
-    "Cristiano", "Dario", "Elena", "Fabrizio", "Gianna",
-    "Hugo", "Isabella", "Javier", "Katarina", "Lorenzo",
-    "Marisol", "Nikolai", "Oksana", "Paolo", "Quintina",
-    "Rafael", "Sofia", "Teodoro", "Ursula", "Vittorio",
-    "Wanda", "Xavier", "Yolanda", "Zoran", "Leandro"
-];
-*/
 
   function getRandomName() {
     if (names.length === 0) return "No more names";
