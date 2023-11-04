@@ -47,9 +47,6 @@ window.toggleMenu = toggleMenu;
 
 // Assuming "restartGame" is the ID of the Restart menu option
 const restartOption = document.getElementById('restartGame2');
-
-console.log ('!!!return to this spot and reassign to corrct restart element in menu');
-
 restartOption.addEventListener('click', () => {
   // Perform actions to restart the app here
   location.reload(); // Reload the page to simulate a restart
@@ -102,34 +99,34 @@ function populatePlayerDetails(numberOfPlayers) {
     // j is the index number of the randomizer player number
 
       const j = getRandomInt(0,63);
-      console.log('j = ' + j);
+      // console.log('j = ' + j)
 
       const playerName = names[j]; // Assuming "names" contains the list of unique player names
-      console.log('playerName = ' + playerName);
+      // console.log('playerName = ' + playerName);
 
       const roleIndex = (j) % roles.length; // Cycling through roles based on the name's index
-      console.log('roleIndex = ' + roleIndex);
+      // console.log('roleIndex = ' + roleIndex);
 
       const role = roles[roleIndex];
-      console.log('role = ' + role);
+      // console.log('role = ' + role);
 
       const roleDescriptionIndex = j % roleDescriptions.length;
-      console.log('roleDescriptionIndex = ' + roleDescriptionIndex);
+      // console.log('roleDescriptionIndex = ' + roleDescriptionIndex);
 
       const roleDescription = roleDescriptions[roleDescriptionIndex];
-      console.log('roleDescription = ' + roleDescription);
+      // console.log('roleDescription = ' + roleDescription);
 
       const archetypesForRole = archetypes[roleIndex];
-      console.log('archetypesForRole = ' + archetypesForRole);
+      // console.log('archetypesForRole = ' + archetypesForRole);
 
       const archetypeIndex = (j) % archetypesForRole.length; // Cycling through archetypes based on the name's index
-      console.log('archetypeIndex = ' + archetypeIndex);
+      // console.log('archetypeIndex = ' + archetypeIndex);
 
       const archetype = archetypesForRole[archetypeIndex];
-      console.log('archetype = ' + archetype);
+      // console.log('archetype = ' + archetype);
 
       const imageSrc = `./img/portraits/${playerName}.jpg`; // Assuming images are named after player names
-      console.log('imageSrc = ' + imageSrc);
+      // console.log('imageSrc = ' + imageSrc);
 
       playerDetails.push({
           name: playerName,
@@ -154,7 +151,7 @@ function createPlayerBoards2(numberOfPlayers) {
 
   // Logic to fetch or generate playerDetails based on the number of players
   populatePlayerDetails(numberOfPlayers);
-  console.log('playerDetails.length = ' + playerDetails.length);
+  // console.log('playerDetails.length = ' + playerDetails.length);
 
 
   playerDetails.slice(0, numberOfPlayers).forEach(player => {
@@ -330,8 +327,6 @@ playerBoards.forEach((board, index) => {
 //document.getElementById('playerSlider').addEventListener('input', createPlayerBoards);
 
 document.getElementById('startButton').addEventListener('click', () => {
-
-
 
   // remove content from PLG after immediate activation
   const pageLayoutGrid = document.getElementById('pageLayoutGrid');
