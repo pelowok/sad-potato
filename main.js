@@ -1,3 +1,17 @@
+
+import {
+  names,
+  uniqueNames,
+  roles,
+  roleDescriptions,
+  archetypes,
+  archetypeDescriptions,
+  playerColors,
+} from './characterData.js';
+
+const playerDetails = [];
+
+
 // Event listener for the player slider
 document.getElementById('playerSlider').addEventListener('input', (event) => {
   const selectedPlayers = event.target.value;
@@ -36,6 +50,48 @@ restartOption.addEventListener('click', () => {
 });
 
 
+function populatePlayerDetails(numberOfPlayers) {
+
+    // const roles = ['Criminal Mastermind', 'Ninja', 'Bomb Technician', 'Smooth Talker', 'Cyber-Genius', 'Race Car Driver', 'Muscleman', 'Field Medic'];
+
+    for (let i = 0; i < numberOfPlayers; i++) {
+        const playerName = names[i]; // Assuming "names" contains the list of unique player names
+        const roleIndex = i % roles.length; // Cycling through roles based on the name's index
+        const role = roles[roleIndex];
+        const archetypesForRole = archetypes[roleIndex];
+        const archetypeIndex = i % archetypesForRole.length; // Cycling through archetypes based on the name's index
+        const archetype = archetypesForRole[archetypeIndex];
+        const imageSrc = `./img/portraits/${playerName}.jpg`; // Assuming images are named after player names
+        const meepleColor = playerColors[i];
+
+        playerDetails.push({
+            name: playerName,
+            color: meepleColor, // Assign the color square based on the sequence of playerColor[]
+            attributes: {
+                brains: getRandomInt(3, 6),
+                smarts: getRandomInt(3, 6),
+                wits: getRandomInt(3, 6),
+                charm: getRandomInt(3, 6)
+            },
+            role: role,
+            roleDescription: roleDescription[roleIndex], // Assuming "roleDescription" array contains role descriptions
+            archetype: archetype,
+            archetypeDescription: archetypeDescriptions[roleIndex][archetypeIndex],
+            image: imageSrc // Assign the image source to the player's details
+        });
+    }
+
+console.debug('playerDetails:' + playerDetails);
+
+}
+
+// Call this function when the Start Button is activated
+startButton.addEventListener('click', () => {
+    populatePlayerDetails(numberOfPlayers);
+    // Other operations after populating the player details, such as updating the UI, displaying the boards, etc.
+});
+
+
 // On DOM Content Load
 document.addEventListener('DOMContentLoaded', () => {
   const playerSlider = document.getElementById('playerSlider');
@@ -62,45 +118,43 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-  // Function to generate a random name for players
-  const names = [
-    "Adela", "Aidan", "Alessia", "Ami", "Amira",
-    "Anton", "Anya", "Audrey", "Celine", "Charlie",
-    "David", "Elena", "Emre", "Eren", "Eve",
-    "Frank", "Grace", "Hanna", "Henry", "Idris",
-    "Isaac", "Ivan",  "Julia", "Kevin", "Leyla",
-    "Liam", "Lina", "Luca", "Lucio", "Luna",
-    "Mateo", "Maya", "Milan", "Mohammad", "Nadia",
-    "Nana", "Nathan", "Nikki", "Noah", "Oliver",
-    "Olivia", "Oscar", "Paul", "Quinn", "Rachel",
-    "Sakura", "Sam", "Sebastian", "Selena", "Sofia",
-    "Sora", "Theo", "Tina", "Ursula", "Victor",
-    "Wendy", "Xander", "Yasmine", "Yolanda", "Yvonne",
-    "Zara", "Zed", "Zev", "Zuzu"
-  ];
 
-  function getRandomName() {
-    if (names.length === 0) return "No more names";
-    const randomIndex = Math.floor(Math.random() * names.length);
-    const name = names[randomIndex];
-    names.splice(randomIndex, 1); // Remove the used name from the array
-    return name;
-  }
 
-  function addPlayerImage(playerBoardIndex, playerBoardName) {
-    const playerBoard = document.getElementsByClassName('player-board')[playerBoardIndex];
-    const image = document.createElement('img');
+  // // Generate the multi-dimensional array
+  // const characterDetails = uniqueNames.map((name, index) => {
+  //   const role = roles[index % roles.length]; // Loop through roles for each name
+  //   const archetypeIndex = Math.floor(index / roles.length) % archetypes[index % roles.length].length; // Loop through archetypes for each role
+  //   const archetype = archetypes[index % roles.length][archetypeIndex]; // Get the corresponding archetype
+  //   const roleDescription = "Role description here..."; // Replace with actual role descriptions
+  //   const archetypeDescription = "Archetype description here..."; // Replace with actual archetype descriptions
+  //   return [name, `./img/portraits/${name}.jpg`, role, roleDescription, archetype, archetypeDescription];
+  // });
 
-    console.log(playerBoardIndex);
+  // // Output the multi-dimensional array
+  // console.log(characterDetails);
 
-    image.src = `./img/portraits/${playerBoardName}.jpg`; // Assuming image names are identical to the names in the 'names' array
+  // function getRandomName() {
+  //   if (names.length === 0) return "No more names";
+  //   const randomIndex = Math.floor(Math.random() * names.length);
+  //   const name = names[randomIndex];
+  //   names.splice(randomIndex, 1); // Remove the used name from the array
+  //   return name;
+  // }
 
-    console.log(playerBoardName);
+  // function addPlayerImage(playerBoardIndex, playerBoardName) {
+  //   const playerBoard = document.getElementsByClassName('player-board')[playerBoardIndex];
+  //   const image = document.createElement('img');
 
-    image.width = 386;
-    image.height = 386;
-    playerBoard.insertBefore(image, playerBoard.firstChild);
-  }
+  //   console.log(playerBoardIndex);
+
+  //   image.src = `./img/portraits/${playerBoardName}.jpg`; // Assuming image names are identical to the names in the 'names' array
+
+  //   console.log(playerBoardName);
+
+  //   image.width = 386;
+  //   image.height = 386;
+  //   playerBoard.insertBefore(image, playerBoard.firstChild);
+  // }
 
 // Function to create player boards with random attributes
 function createPlayerBoards() {
@@ -154,13 +208,13 @@ function createPlayerBoards() {
 
 
   const playerBoards = document.querySelectorAll('.player-board');
-  const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Violet', 'Black'];
+  // const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Violet', 'Black'];
   let colorIndex = 0;
 
   playerBoards.forEach((board, index) => {
     const colorSquare = document.createElement('div');
     colorSquare.classList.add('color-square');
-    colorSquare.style.backgroundColor = colors[colorIndex];
+    colorSquare.style.backgroundColor = playerColors[colorIndex];
 
     // Reset the color index when reaching the end of the colors array
     if (colorIndex === colors.length - 1) {
