@@ -93,14 +93,43 @@ restartOption.addEventListener('click', () => {
 
 // }
 
+// function to populate the playerDetails array
+function populatePlayerDetails(numberOfPlayers) {
+
+  for (let i = 0; i < numberOfPlayers; i++) {
+      const playerName = names[i]; // Assuming "names" contains the list of unique player names
+      const roleIndex = i % roles.length; // Cycling through roles based on the name's index
+      const role = roles[roleIndex];
+      const archetypesForRole = archetypes[roleIndex];
+      const archetypeIndex = i % archetypesForRole.length; // Cycling through archetypes based on the name's index
+      const archetype = archetypesForRole[archetypeIndex];
+      const imageSrc = `./img/portraits/${playerName}.jpg`; // Assuming images are named after player names
+
+      playerDetails.push({
+          name: playerName,
+          color: playerColors[i],
+          attributes: {
+              brains: getRandomInt(3, 6),
+              smarts: getRandomInt(3, 6),
+              wits: getRandomInt(3, 6),
+              charm: getRandomInt(3, 6)
+          },
+          role: role,
+          roleDescription: roleDescription[roleIndex], // Assuming "roleDescription" array contains role descriptions
+          archetype: archetype,
+          archetypeDescription: archetypeDescriptions[roleIndex][archetypeIndex],
+          image: imageSrc // Assign the image source to the player's details
+      });
+  }
+}
+
 // Function to create player boards
 function createPlayerBoards2(numberOfPlayers) {
-  // Assuming playerDetails is populated with the required information for each player
 
   // Logic to fetch or generate playerDetails based on the number of players
+  populatePlayerDetails(playerSlider.value);
+  console.log('playerDetails.length = ' + playerDetails.length);
 
-  // Example: Rendering player boards using playerDetails
-  console.log('numberOfPlayers (internal variable) = ' + numberOfPlayers);
 
   playerDetails.slice(0, numberOfPlayers).forEach(player => {
 
