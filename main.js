@@ -11,6 +11,10 @@ import {
 
 const playerDetails = [];
 
+// Function to generate a random integer within a range
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 // Event listener for the player slider
 document.getElementById('playerSlider').addEventListener('input', (event) => {
@@ -92,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const playerCount = document.getElementById('playerCount');
   const startButton = document.getElementById('startButton');
   const startingMessage = document.getElementById('startingMessage');
+  const numberOfPlayers = document.getElementById('playerSlider').value;
 
   function updateTeamImage(value) {
     const imageSrc = `img/${value}p.jpg`;
@@ -102,14 +107,9 @@ document.addEventListener('DOMContentLoaded', () => {
   updateTeamImage(playerSlider.value);
 
   playerSlider.addEventListener('input', (event) => {
-    const selectedPlayers = event.target.value;
-    updateTeamImage(selectedPlayers);
+    // const selectedPlayers = event.target.value;
+    updateTeamImage(numberOfPlayers);
   });
-
-  // Function to generate a random integer within a range
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
 
 // Call this function when the Start Button is activated
 startButton.addEventListener('click', () => {
