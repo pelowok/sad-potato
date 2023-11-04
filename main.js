@@ -53,42 +53,66 @@ restartOption.addEventListener('click', () => {
   location.reload(); // Reload the page to simulate a restart
 });
 
+function retrievePlayerDetails(playerDetailsArray) {
+  playerDetailsArray.forEach(player => {
+    const playerName = player.name;
+    const meepleColor = player.color;
+    const { brains, smarts, wits, charm } = player.attributes;
+    const role = player.role;
+    const roleDescription = player.roleDescription;
+    const archetype = player.archetype;
+    const archetypeDescription = player.archetypeDescription;
+    const imageSrc = player.image;
 
-function populatePlayerDetails(numberOfPlayers) {
-
-    // const roles = ['Criminal Mastermind', 'Ninja', 'Bomb Technician', 'Smooth Talker', 'Cyber-Genius', 'Race Car Driver', 'Muscleman', 'Field Medic'];
-
-    for (let i = 0; i < numberOfPlayers; i++) {
-        const playerName = names[i]; // Assuming "names" contains the list of unique player names
-        const roleIndex = i % roles.length; // Cycling through roles based on the name's index
-        const role = roles[roleIndex];
-        const roleDescription = roleDescriptions[roleIndex];
-        const archetypesForRole = archetypes[roleIndex];
-        const archetypeIndex = i % archetypesForRole.length; // Cycling through archetypes based on the name's index
-        const archetype = archetypesForRole[archetypeIndex];
-        const imageSrc = `./img/portraits/${playerName}.jpg`; // Assuming images are named after player names
-        const meepleColor = playerColors[i];
-
-        playerDetails.push({
-            name: playerName,
-            color: meepleColor, // Assign the color square based on the sequence of playerColor[]
-            attributes: {
-                brains: getRandomInt(3, 6),
-                smarts: getRandomInt(3, 6),
-                wits: getRandomInt(3, 6),
-                charm: getRandomInt(3, 6)
-            },
-            role: role,
-            roleDescription: roleDescription,
-            archetype: archetype,
-            archetypeDescription: archetypeDescriptions[roleIndex][archetypeIndex],
-            image: imageSrc // Assign the image source to the player's details
-        });
-    }
-
-console.debug('playerDetails:' + playerDetails);
-
+    // Log or use the retrieved properties as needed
+    console.log('Player Name:', playerName);
+    console.log('Meeple Color:', meepleColor);
+    console.log('Attributes:', { brains, smarts, wits, charm });
+    console.log('Role:', role);
+    console.log('Role Description:', roleDescription);
+    console.log('Archetype:', archetype);
+    console.log('Archetype Description:', archetypeDescription);
+    console.log('Image Source:', imageSrc);
+    console.log('---------------------------------------');
+  });
 }
+
+
+// function populatePlayerDetails(numberOfPlayers) {
+
+//     // const roles = ['Criminal Mastermind', 'Ninja', 'Bomb Technician', 'Smooth Talker', 'Cyber-Genius', 'Race Car Driver', 'Muscleman', 'Field Medic'];
+
+//     for (let i = 0; i < numberOfPlayers; i++) {
+//         const playerName = names[i]; // Assuming "names" contains the list of unique player names
+//         const roleIndex = i % roles.length; // Cycling through roles based on the name's index
+//         const role = roles[roleIndex];
+//         const roleDescription = roleDescriptions[roleIndex];
+//         const archetypesForRole = archetypes[roleIndex];
+//         const archetypeIndex = i % archetypesForRole.length; // Cycling through archetypes based on the name's index
+//         const archetype = archetypesForRole[archetypeIndex];
+//         const imageSrc = `./img/portraits/${playerName}.jpg`; // Assuming images are named after player names
+//         const meepleColor = playerColors[i];
+
+//         playerDetails.push({
+//             name: playerName,
+//             color: meepleColor, // Assign the color square based on the sequence of playerColor[]
+//             attributes: {
+//                 brains: getRandomInt(3, 6),
+//                 smarts: getRandomInt(3, 6),
+//                 wits: getRandomInt(3, 6),
+//                 charm: getRandomInt(3, 6)
+//             },
+//             role: role,
+//             roleDescription: roleDescription,
+//             archetype: archetype,
+//             archetypeDescription: archetypeDescriptions[roleIndex][archetypeIndex],
+//             image: imageSrc // Assign the image source to the player's details
+//         });
+//     }
+
+// console.debug('playerDetails:' + playerDetails);
+
+// }
 
 // On DOM Content Load
 document.addEventListener('DOMContentLoaded', () => {
@@ -108,13 +132,14 @@ document.addEventListener('DOMContentLoaded', () => {
   updateTeamImage(playerSlider.value);
 
   playerSlider.addEventListener('input', (event) => {
-    // const selectedPlayers = event.target.value;
     updateTeamImage(numberOfPlayers);
   });
 
 // Call this function when the Start Button is activated
 startButton.addEventListener('click', () => {
-  populatePlayerDetails(numberOfPlayers);
+  // Pass your playerDetails array to the function retrievePlayerDetails
+  retrievePlayerDetails(playerDetails);
+
   // Other operations after populating the player details, such as updating the UI, displaying the boards, etc.
 });
 
