@@ -121,7 +121,9 @@ function createPlayerBoards2(numberOfPlayers) {
   // Logic to fetch or generate playerDetails based on the number of players
 
   // Example: Rendering player boards using playerDetails
-  playerDetails.slice(0, numberOfPlayers).forEach(player => {
+  playerDetails.forEach(player => {
+  // playerDetails.slice(0, numberOfPlayers).forEach(player => {
+    console.log(player);
     // Create and render player boards with the information from the player object
     // This depends on your UI framework or DOM structure
 
@@ -169,7 +171,7 @@ function createPlayerBoards2(numberOfPlayers) {
     playerBoard.appendChild(attributes);
 
     // Append the player board to the main container
-    document.getElementById('main-container').appendChild(playerBoard);
+    document.getElementById('playerBoardsContainer').appendChild(playerBoard);
   });
 }
 
