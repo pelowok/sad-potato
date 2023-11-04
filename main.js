@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateTeamImage(value) {
     const imageSrc = `img/${value}p.jpg`;
     teamImage.src = imageSrc;
-    playerCount.textContent = `Number of Players: ${value}`;
+    playerCounter.textContent = `Number of Players: ${value}`;
   }
 
   updateTeamImage(playerSlider.value);
