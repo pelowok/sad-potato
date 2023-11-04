@@ -206,15 +206,15 @@ function createPlayerBoards(numberOfPlayers) {
         </div>
         <div class="attribute">
             <span>Smarts:</span>
-            <span class="smarts-value">${smarts}</span>
+            <span class="smarts-value">${player.attributes.smarts}</span>
         </div>
         <div class="attribute">
             <span>Wits:</span>
-            <span class="wits-value">${wits}</span>
+            <span class="wits-value">${player.attributes.wits}</span>
         </div>
         <div class="attribute">
             <span>Charm:</span>
-            <span class="charm-value">${charm}</span>
+            <span class="charm-value">${player.attributes.charm}</span>
         </div>
     `;
 
