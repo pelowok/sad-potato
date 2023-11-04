@@ -161,12 +161,35 @@ function createPlayerBoards() {
       const playerBoard = document.createElement("div");
       playerBoard.classList.add("player-board");
 
+      playerDetails.forEach(player => {
+        const playerName = player.name;
+        const meepleColor = player.color;
+        const { brains, smarts, wits, charm } = player.attributes;
+        const role = player.role;
+        const roleDescription = player.roleDescription;
+        const archetype = player.archetype;
+        const archetypeDescription = player.archetypeDescription;
+        const imageSrc = player.image;
+
+        // Log or use the retrieved properties as needed
+        console.log('Player Name:', playerName);
+        console.log('Meeple Color:', meepleColor);
+        console.log('Attributes:', { brains, smarts, wits, charm });
+        console.log('Role:', role);
+        console.log('Role Description:', roleDescription);
+        console.log('Archetype:', archetype);
+        console.log('Archetype Description:', archetypeDescription);
+        console.log('Image Source:', imageSrc);
+        console.log('---------------------------------------');
+      });
+
+
       // Generate random name and attributes for each player
-      const playerName = playerDetails[i].name;
-      const brains = getRandomInt(3, 6);
-      const smarts = getRandomInt(3, 6);
-      const wits = getRandomInt(3, 6);
-      const charm = getRandomInt(3, 6);
+      // const playerName = playerDetails[i].name;
+      // const brains = getRandomInt(3, 6);
+      // const smarts = getRandomInt(3, 6);
+      // const wits = getRandomInt(3, 6);
+      // const charm = getRandomInt(3, 6);
 
       // HTML content for the player board
       playerBoard.innerHTML = `
@@ -225,28 +248,6 @@ function createPlayerBoards() {
   //document.getElementById('playerSlider').addEventListener('input', createPlayerBoards);
 
   startButton.addEventListener('click', () => {
-
-    playerDetails.forEach(player => {
-      const playerName = player.name;
-      const meepleColor = player.color;
-      const { brains, smarts, wits, charm } = player.attributes;
-      const role = player.role;
-      const roleDescription = player.roleDescription;
-      const archetype = player.archetype;
-      const archetypeDescription = player.archetypeDescription;
-      const imageSrc = player.image;
-
-      // Log or use the retrieved properties as needed
-      console.log('Player Name:', playerName);
-      console.log('Meeple Color:', meepleColor);
-      console.log('Attributes:', { brains, smarts, wits, charm });
-      console.log('Role:', role);
-      console.log('Role Description:', roleDescription);
-      console.log('Archetype:', archetype);
-      console.log('Archetype Description:', archetypeDescription);
-      console.log('Image Source:', imageSrc);
-      console.log('---------------------------------------');
-    });
 
     // Initial creation of player boards
     createPlayerBoards();
