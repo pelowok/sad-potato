@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Function to create player boards
 function createPlayerBoards(numberOfPlayers) {
-  const playerDetails = []; // Your array of player details (possibly fetched or pre-loaded)
+  //const playerDetails = []; // Your array of player details (possibly fetched or pre-loaded)
 
   // Logic to generate playerDetails, considering the number of players
 
