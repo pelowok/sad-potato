@@ -182,6 +182,7 @@ function createPlayerBoards(numberOfPlayers) {
   playerDetails.forEach(player => {
     // Create and render player boards with the information from the player object
     // Construct HTML/CSS to display the player details on the UI
+
     // Example: Use DOM manipulation or UI framework (React, Vue, etc.) to render the player boards
     console.log('Creating player board for:', player.name);
     console.log('Player color:', player.color);
@@ -192,37 +193,40 @@ function createPlayerBoards(numberOfPlayers) {
     console.log('Archetype description:', player.archetypeDescription);
     console.log('Attributes:', player.attributes);
     console.log('---------------------------');
+
+    const playerBoard = document.createElement("div");
+    playerBoard.classList.add("player-board");
+
+    // HTML content for the player board
+    playerBoard.innerHTML = `
+        <h3>${player.name}</h3>
+        <div class="attribute">
+            <span>Brains:</span>
+            <span class="brains-value">${player.attributes.brains}</span>
+        </div>
+        <div class="attribute">
+            <span>Smarts:</span>
+            <span class="smarts-value">${smarts}</span>
+        </div>
+        <div class="attribute">
+            <span>Wits:</span>
+            <span class="wits-value">${wits}</span>
+        </div>
+        <div class="attribute">
+            <span>Charm:</span>
+            <span class="charm-value">${charm}</span>
+        </div>
+    `;
+
+    container.appendChild(playerBoard);
+    addPlayerImage(i-1, playerName);
+
   });
 }
 
 
   for (let i = 1; i <= numberOfPlayers; i++) {
-      const playerBoard = document.createElement("div");
-      playerBoard.classList.add("player-board");
 
-      // HTML content for the player board
-      playerBoard.innerHTML = `
-          <h3>${playerDetails[i].name}</h3>
-          <div class="attribute">
-              <span>Brains:</span>
-              <span class="brains-value">${playerDetails[i].attributes.brains}</span>
-          </div>
-          <div class="attribute">
-              <span>Smarts:</span>
-              <span class="smarts-value">${smarts}</span>
-          </div>
-          <div class="attribute">
-              <span>Wits:</span>
-              <span class="wits-value">${wits}</span>
-          </div>
-          <div class="attribute">
-              <span>Charm:</span>
-              <span class="charm-value">${charm}</span>
-          </div>
-      `;
-
-      container.appendChild(playerBoard);
-      addPlayerImage(i-1, playerName);
   }
 
   // Use addPlayerImage function for each player board
