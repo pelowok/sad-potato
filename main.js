@@ -1,7 +1,25 @@
+
+import {
+  names,
+  roles,
+  roleDescriptions,
+  archetypes,
+  archetypeDescriptions,
+  playerColors,
+} from './characterData.js';
+
+const playerDetails = [];
+
+// Function to generate a random integer within a range
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 // Event listener for the player slider
 document.getElementById('playerSlider').addEventListener('input', (event) => {
+
   const selectedPlayers = event.target.value;
-  document.getElementById('playerCount').textContent = `Number of Players: ${selectedPlayers}`;
+  document.getElementById('playerCounter').textContent = `Number of Players: ${selectedPlayers}`;
 
   const imageSrc = `./img/${selectedPlayers}p.jpg`; // Construct the image filename
   document.getElementById('teamImage').src = imageSrc; // Set the image src attribute
@@ -28,181 +46,300 @@ window.addEventListener('click', function(event) {
 window.toggleMenu = toggleMenu;
 
 // Assuming "restartGame" is the ID of the Restart menu option
-const restartOption = document.getElementById('restartGame');
-
+const restartOption = document.getElementById('restartGame2');
 restartOption.addEventListener('click', () => {
   // Perform actions to restart the app here
   location.reload(); // Reload the page to simulate a restart
 });
 
 
+
+
+// function populatePlayerDetails(numberOfPlayers) {
+
+//     // const roles = ['Criminal Mastermind', 'Ninja', 'Bomb Technician', 'Smooth Talker', 'Cyber-Genius', 'Race Car Driver', 'Muscleman', 'Field Medic'];
+
+//     for (let i = 0; i < numberOfPlayers; i++) {
+//         const playerName = names[i]; // Assuming "names" contains the list of unique player names
+//         const roleIndex = i % roles.length; // Cycling through roles based on the name's index
+//         const role = roles[roleIndex];
+//         const roleDescription = roleDescriptions[roleIndex];
+//         const archetypesForRole = archetypes[roleIndex];
+//         const archetypeIndex = i % archetypesForRole.length; // Cycling through archetypes based on the name's index
+//         const archetype = archetypesForRole[archetypeIndex];
+//         const imageSrc = `./img/portraits/${playerName}.jpg`; // Assuming images are named after player names
+//         const meepleColor = playerColors[i];
+
+//         playerDetails.push({
+//             name: playerName,
+//             color: meepleColor, // Assign the color square based on the sequence of playerColor[]
+//             attributes: {
+//                 brains: getRandomInt(3, 6),
+//                 smarts: getRandomInt(3, 6),
+//                 wits: getRandomInt(3, 6),
+//                 charm: getRandomInt(3, 6)
+//             },
+//             role: role,
+//             roleDescription: roleDescription,
+//             archetype: archetype,
+//             archetypeDescription: archetypeDescriptions[roleIndex][archetypeIndex],
+//             image: imageSrc // Assign the image source to the player's details
+//         });
+//     }
+
+// console.debug('playerDetails:' + playerDetails);
+
+// }
+
+// function to populate the playerDetails array
+function populatePlayerDetails(numberOfPlayers) {
+
+  for (let i = 0; i < numberOfPlayers; i++) {
+    // i is TIMES THROUGH THE LOOP
+    // j is the index number of the randomizer player number
+
+      const j = getRandomInt(0,63);
+      // console.log('j = ' + j)
+
+      const playerName = names[j]; // Assuming "names" contains the list of unique player names
+      // console.log('playerName = ' + playerName);
+
+      const roleIndex = (j) % roles.length; // Cycling through roles based on the name's index
+      // console.log('roleIndex = ' + roleIndex);
+
+      const role = roles[roleIndex];
+      // console.log('role = ' + role);
+
+      const roleDescriptionIndex = j % roleDescriptions.length;
+      // console.log('roleDescriptionIndex = ' + roleDescriptionIndex);
+
+      const roleDescription = roleDescriptions[roleDescriptionIndex];
+      // console.log('roleDescription = ' + roleDescription);
+
+      const archetypesForRole = archetypes[roleIndex];
+      // console.log('archetypesForRole = ' + archetypesForRole);
+
+      const archetypeIndex = (j) % archetypesForRole.length; // Cycling through archetypes based on the name's index
+      // console.log('archetypeIndex = ' + archetypeIndex);
+
+      const archetype = archetypesForRole[archetypeIndex];
+      // console.log('archetype = ' + archetype);
+
+      const imageSrc = `./img/portraits/${playerName}.jpg`; // Assuming images are named after player names
+      // console.log('imageSrc = ' + imageSrc);
+
+      playerDetails.push({
+          name: playerName,
+          color: playerColors[i],
+          attributes: {
+              brains: getRandomInt(3, 6),
+              smarts: getRandomInt(3, 6),
+              wits: getRandomInt(3, 6),
+              charm: getRandomInt(3, 6)
+          },
+          role: role,
+          roleDescription: roleDescription, // Assuming "roleDescription" array contains role descriptions
+          archetype: archetype,
+          archetypeDescription: archetypeDescriptions[roleIndex][archetypeIndex],
+          image: imageSrc // Assign the image source to the player's details
+      });
+  }
+}
+
+// Function to create player boards
+function createPlayerBoards2(numberOfPlayers) {
+
+  // Logic to fetch or generate playerDetails based on the number of players
+  populatePlayerDetails(numberOfPlayers);
+  // console.log('playerDetails.length = ' + playerDetails.length);
+
+
+  playerDetails.slice(0, numberOfPlayers).forEach(player => {
+
+    // Create and render player boards with the information from the player object
+    // This depends on your UI framework or DOM structure
+
+    const playerBoard = document.createElement('div');
+    playerBoard.className = 'player-board';
+
+    // Add player's name
+    const playerName = document.createElement('div');
+    playerName.textContent = player.name;
+    playerBoard.appendChild(playerName);
+
+    // Add a colored square (meeple color) in the top right corner
+    const colorSquare = document.createElement('div');
+    colorSquare.className = 'color-square';
+    colorSquare.style.backgroundColor = player.color; // Set the color based on player's meeple color
+    playerBoard.appendChild(colorSquare);
+
+    // Add the player image
+    const playerImage = document.createElement('img');
+    playerImage.src = player.image; // Set the image source
+    playerImage.alt = player.name; // Alt text for accessibility
+    playerBoard.appendChild(playerImage);
+
+    // Add role and description
+    const role = document.createElement('div');
+    role.textContent = `Role: ${player.role}`;
+    playerBoard.appendChild(role);
+
+    const roleDescription = document.createElement('div');
+    roleDescription.textContent = `Role Description: ${player.roleDescription}`;
+    playerBoard.appendChild(roleDescription);
+
+    // Add archetype and description
+    const archetype = document.createElement('div');
+    archetype.textContent = `Archetype: ${player.archetype}`;
+    playerBoard.appendChild(archetype);
+
+    const archetypeDescription = document.createElement('div');
+    archetypeDescription.textContent = `Archetype Description: ${player.archetypeDescription}`;
+    playerBoard.appendChild(archetypeDescription);
+
+    // Add player attributes
+    const attributes = document.createElement('div');
+    attributes.textContent = `Attributes: Brains: ${player.attributes.brains}, Smarts: ${player.attributes.smarts}, Wits: ${player.attributes.wits}, Charm: ${player.attributes.charm}`;
+    playerBoard.appendChild(attributes);
+
+    // Append the player board to the main container
+    document.getElementById('playerBoardsContainer').appendChild(playerBoard);
+  });
+}
+
 // On DOM Content Load
 document.addEventListener('DOMContentLoaded', () => {
   const playerSlider = document.getElementById('playerSlider');
   const teamImage = document.getElementById('teamImage');
-  const playerCount = document.getElementById('playerCount');
+  const playerCounter = document.getElementById('playerCounter');
   const startButton = document.getElementById('startButton');
   const startingMessage = document.getElementById('startingMessage');
+  // const numberOfPlayers = document.getElementById('playerSlider').value;
+  const container = document.getElementById('playerBoardsContainer');
 
   function updateTeamImage(value) {
     const imageSrc = `img/${value}p.jpg`;
     teamImage.src = imageSrc;
-    playerCount.textContent = `Number of Players: ${value}`;
+    playerCounter.textContent = `Number of Players: ${value}`;
   }
 
   updateTeamImage(playerSlider.value);
 
   playerSlider.addEventListener('input', (event) => {
-    const selectedPlayers = event.target.value;
-    updateTeamImage(selectedPlayers);
+    updateTeamImage(playerSlider.value);
   });
 
-  // Function to generate a random integer within a range
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+
+
+
+// Function to create player boards
+function createPlayerBoards(numberOfPlayers) {
+  //const playerDetails = []; // Your array of player details (possibly fetched or pre-loaded)
+
+  // Logic to generate playerDetails, considering the number of players
+
+  // Example: Generating playerDetails for a specific number of players
+  for (let i = 0; i < numberOfPlayers; i++) {
+    // Create a player object with random or predefined attributes
+    const player = {
+      name: `Player ${i + 1}`,
+      color: 'blue', // Replace with actual color logic or values
+      image: `./img/player_${i + 1}.jpg`, // Replace with actual image source
+      role: 'Role A', // Replace with actual role logic or values
+      roleDescription: 'Description of Role A',
+      archetype: 'Archetype 1', // Replace with actual archetype logic or values
+      archetypeDescription: 'Description of Archetype 1',
+      attributes: {
+        brains: Math.floor(Math.random() * 4) + 3,
+        smarts: Math.floor(Math.random() * 4) + 3,
+        wits: Math.floor(Math.random() * 4) + 3,
+        charm: Math.floor(Math.random() * 4) + 3
+      }
+    };
+
+    // Push the player object into the playerDetails array
+    playerDetails.push(player);
+  }
+
+  // Example: Rendering player boards using playerDetails
+  playerDetails.forEach(player => {
+
+    const playerBoard = document.createElement("div");
+    playerBoard.classList.add("player-board");
+
+    // HTML content for the player board
+    playerBoard.innerHTML = `
+        <h3>${player.name}</h3>
+        <div class="attribute">
+            <span>Brains:</span>
+            <span class="brains-value">${player.attributes.brains}</span>
+        </div>
+        <div class="attribute">
+            <span>Smarts:</span>
+            <span class="smarts-value">${player.attributes.smarts}</span>
+        </div>
+        <div class="attribute">
+            <span>Wits:</span>
+            <span class="wits-value">${player.attributes.wits}</span>
+        </div>
+        <div class="attribute">
+            <span>Charm:</span>
+            <span class="charm-value">${player.attributes.charm}</span>
+        </div>
+    `;
+
+    container.appendChild(playerBoard);
+    // addPlayerImage(i-1, playerName);
+
+    console.log('Creating player board for:', player.name);
+    console.log('Player color:', player.color);
+    console.log('Image source:', player.image);
+    console.log('Role:', player.role);
+    console.log('Role description:', player.roleDescription);
+    console.log('Archetype:', player.archetype);
+    console.log('Archetype description:', player.archetypeDescription);
+    console.log('Attributes:', player.attributes);
+    console.log('---------------------------');
+
+  });
 }
 
-  // Function to generate a random name for players
-  const names = [
-    "Adela", "Aidan", "Alessia", "Ami", "Amira",
-    "Anton", "Anya", "Audrey", "Celine", "Charlie",
-    "David", "Elena", "Emre", "Eren", "Eve",
-    "Frank", "Grace", "Hanna", "Henry", "Idris",
-    "Isaac", "Ivan",  "Julia", "Kevin", "Leyla",
-    "Liam", "Lina", "Luca", "Lucio", "Luna",
-    "Mateo", "Maya", "Milan", "Mohammad", "Nadia",
-    "Nana", "Nathan", "Nikki", "Noah", "Oliver",
-    "Olivia", "Oscar", "Paul", "Quinn", "Rachel",
-    "Sakura", "Sam", "Sebastian", "Selena", "Sofia",
-    "Sora", "Theo", "Tina", "Ursula", "Victor",
-    "Wendy", "Xander", "Yasmine", "Yolanda", "Yvonne",
-    "Zara", "Zed", "Zev", "Zuzu"
-  ];
+const playerBoards = document.querySelectorAll('.player-board');
 
-  function getRandomName() {
-    if (names.length === 0) return "No more names";
-    const randomIndex = Math.floor(Math.random() * names.length);
-    const name = names[randomIndex];
-    names.splice(randomIndex, 1); // Remove the used name from the array
-    return name;
+let colorIndex = 0;
+
+playerBoards.forEach((board, index) => {
+  const colorSquare = document.createElement('div');
+  colorSquare.classList.add('color-square');
+  colorSquare.style.backgroundColor = playerColors[colorIndex];
+
+  // Reset the color index when reaching the end of the colors array
+  if (colorIndex === colors.length - 1) {
+    colorIndex = 0;
+  } else {
+    colorIndex++;
   }
 
-  function addPlayerImage(playerBoardIndex, playerBoardName) {
-    const playerBoard = document.getElementsByClassName('player-board')[playerBoardIndex];
-    const image = document.createElement('img');
+  board.appendChild(colorSquare);
+});
 
-    console.log(playerBoardIndex);
+// Event listener for the player slider
+//document.getElementById('playerSlider').addEventListener('input', createPlayerBoards);
 
-    image.src = `./img/portraits/${playerBoardName}.jpg`; // Assuming image names are identical to the names in the 'names' array
+document.getElementById('startButton').addEventListener('click', () => {
 
-    console.log(playerBoardName);
-
-    image.width = 386;
-    image.height = 386;
-    playerBoard.insertBefore(image, playerBoard.firstChild);
+  // remove content from PLG after immediate activation
+  const pageLayoutGrid = document.getElementById('pageLayoutGrid');
+  while (pageLayoutGrid.firstChild) {
+    pageLayoutGrid.removeChild(pageLayoutGrid.firstChild);
   }
 
-// Function to create player boards with random attributes
-function createPlayerBoards() {
-  const container = document.getElementById("playerBoardsContainer");
-  const playerSlider = document.getElementById("playerSlider");
-  const numberOfPlayers = parseInt(playerSlider.value); // Get the value from the player slider
+  // remove the team image
+  const imageContainer = document.getElementById('imageContainer');
+  imageContainer.remove();
 
-  container.innerHTML = ''; // Clear the container
-
-  for (let i = 1; i <= numberOfPlayers; i++) {
-      const playerBoard = document.createElement("div");
-      playerBoard.classList.add("player-board");
-
-      // Generate random name and attributes for each player
-      const playerName = getRandomName();
-      const brains = getRandomInt(3, 6);
-      const smarts = getRandomInt(3, 6);
-      const wits = getRandomInt(3, 6);
-      const charm = getRandomInt(3, 6);
-
-      // HTML content for the player board
-      playerBoard.innerHTML = `
-          <h3>${playerName}</h3>
-          <div class="attribute">
-              <span>Brains:</span>
-              <span class="brains-value">${brains}</span>
-          </div>
-          <div class="attribute">
-              <span>Smarts:</span>
-              <span class="smarts-value">${smarts}</span>
-          </div>
-          <div class="attribute">
-              <span>Wits:</span>
-              <span class="wits-value">${wits}</span>
-          </div>
-          <div class="attribute">
-              <span>Charm:</span>
-              <span class="charm-value">${charm}</span>
-          </div>
-      `;
-
-      container.appendChild(playerBoard);
-      addPlayerImage(i-1, playerName);
-  }
-
-  // Use addPlayerImage function for each player board
-
-  //for (let i = 0; i < numberOfPlayers; i++) {
-  //  addPlayerImage(i);
-  //}
-
-
-  const playerBoards = document.querySelectorAll('.player-board');
-  const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Violet', 'Black'];
-  let colorIndex = 0;
-
-  playerBoards.forEach((board, index) => {
-    const colorSquare = document.createElement('div');
-    colorSquare.classList.add('color-square');
-    colorSquare.style.backgroundColor = colors[colorIndex];
-
-    // Reset the color index when reaching the end of the colors array
-    if (colorIndex === colors.length - 1) {
-      colorIndex = 0;
-    } else {
-      colorIndex++;
-    }
-
-    board.appendChild(colorSquare);
-  });
-
-  }
-
-  // Event listener for the player slider
-  //document.getElementById('playerSlider').addEventListener('input', createPlayerBoards);
-
-  startButton.addEventListener('click', () => {
-    // Initial creation of player boards
-    createPlayerBoards();
-
-    // remove content from PLG after immediate activation
-    const pageLayoutGrid = document.getElementById('pageLayoutGrid');
-    while (pageLayoutGrid.firstChild) {
-      pageLayoutGrid.removeChild(pageLayoutGrid.firstChild);
-    }
-
-
-
-    const imageContainer = document.getElementById('imageContainer');
-    imageContainer.remove();
-
-    setTimeout(() => {
-
-      startingMessage.textContent = 'Good luck, everybody.';
-      startingMessage.style.display = 'block';
-      startingMessage.style.opacity = '1';
-
-      setTimeout(() => {
-        startingMessage.style.opacity = '0';
-        startingMessage.textContent = '';
-      }, 3000); // 3 seconds for the message to fade out
-    }, 1500); // 1.5 seconds after Start Button activation for Start Message
+  // create the player boards
+  createPlayerBoards2(playerSlider.value);
 
   });
 

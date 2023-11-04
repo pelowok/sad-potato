@@ -17,6 +17,19 @@ body {
 
 /* GAME CONTROLS */
 
+#restartGame2 {
+  padding: 1em;
+  font-size: 2em;
+  font-weight: bold;
+  border-radius: 5px;
+  display: block;
+  margin: 0 auto; /* Center the button */
+  grid-column: span 2; /* Span all columns */
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 .game-controls {
   display: flex;
   align-items: center;
