@@ -85,13 +85,6 @@ console.debug('playerDetails:' + playerDetails);
 
 }
 
-// Call this function when the Start Button is activated
-startButton.addEventListener('click', () => {
-    populatePlayerDetails(numberOfPlayers);
-    // Other operations after populating the player details, such as updating the UI, displaying the boards, etc.
-});
-
-
 // On DOM Content Load
 document.addEventListener('DOMContentLoaded', () => {
   const playerSlider = document.getElementById('playerSlider');
@@ -118,7 +111,11 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-
+// Call this function when the Start Button is activated
+startButton.addEventListener('click', () => {
+  populatePlayerDetails(numberOfPlayers);
+  // Other operations after populating the player details, such as updating the UI, displaying the boards, etc.
+});
 
   // // Generate the multi-dimensional array
   // const characterDetails = uniqueNames.map((name, index) => {
