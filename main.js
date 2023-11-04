@@ -53,29 +53,7 @@ restartOption.addEventListener('click', () => {
   location.reload(); // Reload the page to simulate a restart
 });
 
-function retrievePlayerDetails(playerDetailsArray) {
-  playerDetailsArray.forEach(player => {
-    const playerName = player.name;
-    const meepleColor = player.color;
-    const { brains, smarts, wits, charm } = player.attributes;
-    const role = player.role;
-    const roleDescription = player.roleDescription;
-    const archetype = player.archetype;
-    const archetypeDescription = player.archetypeDescription;
-    const imageSrc = player.image;
 
-    // Log or use the retrieved properties as needed
-    console.log('Player Name:', playerName);
-    console.log('Meeple Color:', meepleColor);
-    console.log('Attributes:', { brains, smarts, wits, charm });
-    console.log('Role:', role);
-    console.log('Role Description:', roleDescription);
-    console.log('Archetype:', archetype);
-    console.log('Archetype Description:', archetypeDescription);
-    console.log('Image Source:', imageSrc);
-    console.log('---------------------------------------');
-  });
-}
 
 
 // function populatePlayerDetails(numberOfPlayers) {
@@ -248,8 +226,27 @@ function createPlayerBoards() {
 
   startButton.addEventListener('click', () => {
 
-    retrievePlayerDetails(playerDetails);
-    // Add other operations after populating the player details, such as updating the UI, displaying the boards, etc.
+    playerDetails.forEach(player => {
+      const playerName = player.name;
+      const meepleColor = player.color;
+      const { brains, smarts, wits, charm } = player.attributes;
+      const role = player.role;
+      const roleDescription = player.roleDescription;
+      const archetype = player.archetype;
+      const archetypeDescription = player.archetypeDescription;
+      const imageSrc = player.image;
+
+      // Log or use the retrieved properties as needed
+      console.log('Player Name:', playerName);
+      console.log('Meeple Color:', meepleColor);
+      console.log('Attributes:', { brains, smarts, wits, charm });
+      console.log('Role:', role);
+      console.log('Role Description:', roleDescription);
+      console.log('Archetype:', archetype);
+      console.log('Archetype Description:', archetypeDescription);
+      console.log('Image Source:', imageSrc);
+      console.log('---------------------------------------');
+    });
 
     // Initial creation of player boards
     createPlayerBoards();
