@@ -46,7 +46,9 @@ window.addEventListener('click', function(event) {
 window.toggleMenu = toggleMenu;
 
 // Assuming "restartGame" is the ID of the Restart menu option
-const restartOption = document.getElementById('restartGame');
+const restartOption = document.getElementById('restartGame2');
+
+console.log ('!!!return to this spot and reassign to corrct restart element in menu');
 
 restartOption.addEventListener('click', () => {
   // Perform actions to restart the app here
@@ -118,9 +120,16 @@ function populatePlayerDetails(numberOfPlayers) {
       console.log('roleDescription = ' + roleDescription);
 
       const archetypesForRole = archetypes[roleIndex];
-      const archetypeIndex = (j/8) % archetypesForRole.length; // Cycling through archetypes based on the name's index
+      console.log('archetypesForRole = ' + archetypesForRole);
+
+      const archetypeIndex = (j) % archetypesForRole.length; // Cycling through archetypes based on the name's index
+      console.log('archetypeIndex = ' + archetypeIndex);
+
       const archetype = archetypesForRole[archetypeIndex];
+      console.log('archetype = ' + archetype);
+
       const imageSrc = `./img/portraits/${playerName}.jpg`; // Assuming images are named after player names
+      console.log('imageSrc = ' + imageSrc);
 
       playerDetails.push({
           name: playerName,
@@ -132,7 +141,7 @@ function populatePlayerDetails(numberOfPlayers) {
               charm: getRandomInt(3, 6)
           },
           role: role,
-          roleDescription: roleDescription[roleIndex], // Assuming "roleDescription" array contains role descriptions
+          roleDescription: roleDescription, // Assuming "roleDescription" array contains role descriptions
           archetype: archetype,
           archetypeDescription: archetypeDescriptions[roleIndex][archetypeIndex],
           image: imageSrc // Assign the image source to the player's details

@@ -17,6 +17,12 @@ body {
 
 /* GAME CONTROLS */
 
+.big-button {
+  width: 50px;
+  height: 50px;
+
+}
+
 .game-controls {
   display: flex;
   align-items: center;
