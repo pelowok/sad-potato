@@ -62,6 +62,7 @@ function populatePlayerDetails(numberOfPlayers) {
         const playerName = names[i]; // Assuming "names" contains the list of unique player names
         const roleIndex = i % roles.length; // Cycling through roles based on the name's index
         const role = roles[roleIndex];
+        const roleDescription = roleDescriptions[roleIndex];
         const archetypesForRole = archetypes[roleIndex];
         const archetypeIndex = i % archetypesForRole.length; // Cycling through archetypes based on the name's index
         const archetype = archetypesForRole[archetypeIndex];
@@ -78,7 +79,7 @@ function populatePlayerDetails(numberOfPlayers) {
                 charm: getRandomInt(3, 6)
             },
             role: role,
-            roleDescription: roleDescription[roleIndex], // Assuming "roleDescription" array contains role descriptions
+            roleDescription: roleDescription,
             archetype: archetype,
             archetypeDescription: archetypeDescriptions[roleIndex][archetypeIndex],
             image: imageSrc // Assign the image source to the player's details
