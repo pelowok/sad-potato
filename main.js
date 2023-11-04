@@ -19,7 +19,7 @@ function getRandomInt(min, max) {
 // Event listener for the player slider
 document.getElementById('playerSlider').addEventListener('input', (event) => {
 
-  console.log('numberOfPlayers = ' + event.target.value);
+  console.log('numberOfPlayers = ' + playerSlider.value);
 
   const selectedPlayers = event.target.value;
   document.getElementById('playerCounter').textContent = `Number of Players: ${selectedPlayers}`;
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const playerCounter = document.getElementById('playerCounter');
   const startButton = document.getElementById('startButton');
   const startingMessage = document.getElementById('startingMessage');
-  const numberOfPlayers = document.getElementById('playerSlider').value;
+  // const numberOfPlayers = document.getElementById('playerSlider').value;
   const container = document.getElementById('playerBoardsContainer');
 
   function updateTeamImage(value) {
@@ -114,8 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateTeamImage(playerSlider.value);
 
   playerSlider.addEventListener('input', (event) => {
-    numberOfPlayers = playerSlider.value;
-    updateTeamImage(numberOfPlayers);
+    updateTeamImage(playerSlider.value);
   });
 
 // Function to create player boards
@@ -125,7 +124,7 @@ function createPlayerBoards2(numberOfPlayers) {
   // Logic to fetch or generate playerDetails based on the number of players
 
   // Example: Rendering player boards using playerDetails
-  console.log('numberOfPlayers = ' + numberOfPlayers);
+  console.log('numberOfPlayers (internal variable) = ' + numberOfPlayers);
 
   playerDetails.slice(0, numberOfPlayers).forEach(player => {
 
@@ -290,7 +289,7 @@ document.getElementById('startButton').addEventListener('click', () => {
   imageContainer.remove();
 
   // create the player boards
-  createPlayerBoards2(numberOfPlayers);
+  createPlayerBoards2(playerSlider.value);
 
   });
 
