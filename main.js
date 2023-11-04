@@ -114,41 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
     updateTeamImage(numberOfPlayers);
   });
 
-  // // Generate the multi-dimensional array
-  // const characterDetails = uniqueNames.map((name, index) => {
-  //   const role = roles[index % roles.length]; // Loop through roles for each name
-  //   const archetypeIndex = Math.floor(index / roles.length) % archetypes[index % roles.length].length; // Loop through archetypes for each role
-  //   const archetype = archetypes[index % roles.length][archetypeIndex]; // Get the corresponding archetype
-  //   const roleDescription = "Role description here..."; // Replace with actual role descriptions
-  //   const archetypeDescription = "Archetype description here..."; // Replace with actual archetype descriptions
-  //   return [name, `./img/portraits/${name}.jpg`, role, roleDescription, archetype, archetypeDescription];
-  // });
-
-  // // Output the multi-dimensional array
-  // console.log(characterDetails);
-
-  // function getRandomName() {
-  //   if (names.length === 0) return "No more names";
-  //   const randomIndex = Math.floor(Math.random() * names.length);
-  //   const name = names[randomIndex];
-  //   names.splice(randomIndex, 1); // Remove the used name from the array
-  //   return name;
-  // }
-
-  // function addPlayerImage(playerBoardIndex, playerBoardName) {
-  //   const playerBoard = document.getElementsByClassName('player-board')[playerBoardIndex];
-  //   const image = document.createElement('img');
-
-  //   console.log(playerBoardIndex);
-
-  //   image.src = `./img/portraits/${playerBoardName}.jpg`; // Assuming image names are identical to the names in the 'names' array
-
-  //   console.log(playerBoardName);
-
-  //   image.width = 386;
-  //   image.height = 386;
-  //   playerBoard.insertBefore(image, playerBoard.firstChild);
-  // }
 
 // Function to create player boards
 function createPlayerBoards(numberOfPlayers) {
@@ -181,19 +146,6 @@ function createPlayerBoards(numberOfPlayers) {
 
   // Example: Rendering player boards using playerDetails
   playerDetails.forEach(player => {
-    // Create and render player boards with the information from the player object
-    // Construct HTML/CSS to display the player details on the UI
-
-    // Example: Use DOM manipulation or UI framework (React, Vue, etc.) to render the player boards
-    console.log('Creating player board for:', player.name);
-    console.log('Player color:', player.color);
-    console.log('Image source:', player.image);
-    console.log('Role:', player.role);
-    console.log('Role description:', player.roleDescription);
-    console.log('Archetype:', player.archetype);
-    console.log('Archetype description:', player.archetypeDescription);
-    console.log('Attributes:', player.attributes);
-    console.log('---------------------------');
 
     const playerBoard = document.createElement("div");
     playerBoard.classList.add("player-board");
@@ -220,73 +172,57 @@ function createPlayerBoards(numberOfPlayers) {
     `;
 
     container.appendChild(playerBoard);
-    addPlayerImage(i-1, playerName);
+    // addPlayerImage(i-1, playerName);
+
+    console.log('Creating player board for:', player.name);
+    console.log('Player color:', player.color);
+    console.log('Image source:', player.image);
+    console.log('Role:', player.role);
+    console.log('Role description:', player.roleDescription);
+    console.log('Archetype:', player.archetype);
+    console.log('Archetype description:', player.archetypeDescription);
+    console.log('Attributes:', player.attributes);
+    console.log('---------------------------');
 
   });
 }
 
+const playerBoards = document.querySelectorAll('.player-board');
 
-  for (let i = 1; i <= numberOfPlayers; i++) {
+let colorIndex = 0;
 
+playerBoards.forEach((board, index) => {
+  const colorSquare = document.createElement('div');
+  colorSquare.classList.add('color-square');
+  colorSquare.style.backgroundColor = playerColors[colorIndex];
+
+  // Reset the color index when reaching the end of the colors array
+  if (colorIndex === colors.length - 1) {
+    colorIndex = 0;
+  } else {
+    colorIndex++;
   }
 
-  // Use addPlayerImage function for each player board
+  board.appendChild(colorSquare);
+});
 
-  //for (let i = 0; i < numberOfPlayers; i++) {
-  //  addPlayerImage(i);
-  //}
+// Event listener for the player slider
+//document.getElementById('playerSlider').addEventListener('input', createPlayerBoards);
 
+document.getElementById('startButton').addEventListener('click', () => {
 
-  const playerBoards = document.querySelectorAll('.player-board');
-  // const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Violet', 'Black'];
-  let colorIndex = 0;
+// remove content from PLG after immediate activation
+const pageLayoutGrid = document.getElementById('pageLayoutGrid');
+while (pageLayoutGrid.firstChild) {
+  pageLayoutGrid.removeChild(pageLayoutGrid.firstChild);
+}
 
-  playerBoards.forEach((board, index) => {
-    const colorSquare = document.createElement('div');
-    colorSquare.classList.add('color-square');
-    colorSquare.style.backgroundColor = playerColors[colorIndex];
+  // remove the team image
+  const imageContainer = document.getElementById('imageContainer');
+  imageContainer.remove();
 
-    // Reset the color index when reaching the end of the colors array
-    if (colorIndex === colors.length - 1) {
-      colorIndex = 0;
-    } else {
-      colorIndex++;
-    }
-
-    board.appendChild(colorSquare);
-  });
-
-
-
-  // Event listener for the player slider
-  //document.getElementById('playerSlider').addEventListener('input', createPlayerBoards);
-
-  document.getElementById('startButton').addEventListener('click', () => {
-
-    createPlayerBoards(numberOfPlayers);
-
-    // remove content from PLG after immediate activation
-    const pageLayoutGrid = document.getElementById('pageLayoutGrid');
-    while (pageLayoutGrid.firstChild) {
-      pageLayoutGrid.removeChild(pageLayoutGrid.firstChild);
-    }
-
-
-
-    const imageContainer = document.getElementById('imageContainer');
-    imageContainer.remove();
-
-    setTimeout(() => {
-
-      startingMessage.textContent = 'Good luck, everybody.';
-      startingMessage.style.display = 'block';
-      startingMessage.style.opacity = '1';
-
-      setTimeout(() => {
-        startingMessage.style.opacity = '0';
-        startingMessage.textContent = '';
-      }, 3000); // 3 seconds for the message to fade out
-    }, 1500); // 1.5 seconds after Start Button activation for Start Message
+  // create the player boards
+  createPlayerBoards(numberOfPlayers);
 
   });
 
