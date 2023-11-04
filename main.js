@@ -157,32 +157,31 @@ function createPlayerBoards() {
 
   container.innerHTML = ''; // Clear the container
 
+  // playerDetails.forEach(player => {
+  //   const playerName = player.name;
+  //   const meepleColor = player.color;
+  //   const { brains, smarts, wits, charm } = player.attributes;
+  //   const role = player.role;
+  //   const roleDescription = player.roleDescription;
+  //   const archetype = player.archetype;
+  //   const archetypeDescription = player.archetypeDescription;
+  //   const imageSrc = player.image;
+
+  //   // Log or use the retrieved properties as needed
+  //   console.log('Player Name:', playerName);
+  //   console.log('Meeple Color:', meepleColor);
+  //   console.log('Attributes:', { brains, smarts, wits, charm });
+  //   console.log('Role:', role);
+  //   console.log('Role Description:', roleDescription);
+  //   console.log('Archetype:', archetype);
+  //   console.log('Archetype Description:', archetypeDescription);
+  //   console.log('Image Source:', imageSrc);
+  //   console.log('---------------------------------------');
+  // });
+
   for (let i = 1; i <= numberOfPlayers; i++) {
       const playerBoard = document.createElement("div");
       playerBoard.classList.add("player-board");
-
-      playerDetails.forEach(player => {
-        const playerName = player.name;
-        const meepleColor = player.color;
-        const { brains, smarts, wits, charm } = player.attributes;
-        const role = player.role;
-        const roleDescription = player.roleDescription;
-        const archetype = player.archetype;
-        const archetypeDescription = player.archetypeDescription;
-        const imageSrc = player.image;
-
-        // Log or use the retrieved properties as needed
-        console.log('Player Name:', playerName);
-        console.log('Meeple Color:', meepleColor);
-        console.log('Attributes:', { brains, smarts, wits, charm });
-        console.log('Role:', role);
-        console.log('Role Description:', roleDescription);
-        console.log('Archetype:', archetype);
-        console.log('Archetype Description:', archetypeDescription);
-        console.log('Image Source:', imageSrc);
-        console.log('---------------------------------------');
-      });
-
 
       // Generate random name and attributes for each player
       // const playerName = playerDetails[i].name;
@@ -193,10 +192,10 @@ function createPlayerBoards() {
 
       // HTML content for the player board
       playerBoard.innerHTML = `
-          <h3>${playerName}</h3>
+          <h3>${playerDetails[i].name}</h3>
           <div class="attribute">
               <span>Brains:</span>
-              <span class="brains-value">${brains}</span>
+              <span class="brains-value">${playerDetails[i].attributes.brains}</span>
           </div>
           <div class="attribute">
               <span>Smarts:</span>
