@@ -135,14 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
     updateTeamImage(numberOfPlayers);
   });
 
-// Call this function when the Start Button is activated
-startButton.addEventListener('click', () => {
-  // Pass your playerDetails array to the function retrievePlayerDetails
-  retrievePlayerDetails(playerDetails);
-
-  // Other operations after populating the player details, such as updating the UI, displaying the boards, etc.
-});
-
   // // Generate the multi-dimensional array
   // const characterDetails = uniqueNames.map((name, index) => {
   //   const role = roles[index % roles.length]; // Loop through roles for each name
@@ -255,6 +247,10 @@ function createPlayerBoards() {
   //document.getElementById('playerSlider').addEventListener('input', createPlayerBoards);
 
   startButton.addEventListener('click', () => {
+
+    retrievePlayerDetails(playerDetails);
+    // Add other operations after populating the player details, such as updating the UI, displaying the boards, etc.
+
     // Initial creation of player boards
     createPlayerBoards();
 
