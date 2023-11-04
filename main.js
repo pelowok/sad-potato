@@ -167,7 +167,7 @@ function createPlayerBoards() {
       playerBoard.classList.add("player-board");
 
       // Generate random name and attributes for each player
-      const playerName = getRandomName();
+      const playerName = playerDetails[i].name;
       const brains = getRandomInt(3, 6);
       const smarts = getRandomInt(3, 6);
       const wits = getRandomInt(3, 6);
