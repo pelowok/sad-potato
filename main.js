@@ -18,8 +18,11 @@ function getRandomInt(min, max) {
 
 // Event listener for the player slider
 document.getElementById('playerSlider').addEventListener('input', (event) => {
+
+  console.log('numberOfPlayers = ' + event.target.value);
+
   const selectedPlayers = event.target.value;
-  document.getElementById('playerCount').textContent = `Number of Players: ${selectedPlayers}`;
+  document.getElementById('playerCounter').textContent = `Number of Players: ${selectedPlayers}`;
 
   const imageSrc = `./img/${selectedPlayers}p.jpg`; // Construct the image filename
   document.getElementById('teamImage').src = imageSrc; // Set the image src attribute
@@ -121,9 +124,10 @@ function createPlayerBoards2(numberOfPlayers) {
   // Logic to fetch or generate playerDetails based on the number of players
 
   // Example: Rendering player boards using playerDetails
-  playerDetails.forEach(player => {
-  // playerDetails.slice(0, numberOfPlayers).forEach(player => {
-    console.log(player);
+  console.log('numberOfPlayers = ' + numberOfPlayers);
+
+  playerDetails.slice(0, numberOfPlayers).forEach(player => {
+
     // Create and render player boards with the information from the player object
     // This depends on your UI framework or DOM structure
 
@@ -271,6 +275,8 @@ playerBoards.forEach((board, index) => {
 //document.getElementById('playerSlider').addEventListener('input', createPlayerBoards);
 
 document.getElementById('startButton').addEventListener('click', () => {
+
+
 
   // remove content from PLG after immediate activation
   const pageLayoutGrid = document.getElementById('pageLayoutGrid');
