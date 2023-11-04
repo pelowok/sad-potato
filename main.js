@@ -96,12 +96,29 @@ restartOption.addEventListener('click', () => {
 function populatePlayerDetails(numberOfPlayers) {
 
   for (let i = 0; i < numberOfPlayers; i++) {
-      const playerName = names[i]; // Assuming "names" contains the list of unique player names
-      const roleIndex = i % roles.length; // Cycling through roles based on the name's index
+    // i is TIMES THROUGH THE LOOP
+    // j is the index number of the randomizer player number
+
+      const j = getRandomInt(0,63);
+      console.log('j = ' + j);
+
+      const playerName = names[j]; // Assuming "names" contains the list of unique player names
+      console.log('playerName = ' + playerName);
+
+      const roleIndex = (j) % roles.length; // Cycling through roles based on the name's index
+      console.log('roleIndex = ' + roleIndex);
+
       const role = roles[roleIndex];
-      const roleDescription = i % roleDescriptions.length;
+      console.log('role = ' + role);
+
+      const roleDescriptionIndex = j % roleDescriptions.length;
+      console.log('roleDescriptionIndex = ' + roleDescriptionIndex);
+
+      const roleDescription = roleDescriptions[roleDescriptionIndex];
+      console.log('roleDescription = ' + roleDescription);
+
       const archetypesForRole = archetypes[roleIndex];
-      const archetypeIndex = i % archetypesForRole.length; // Cycling through archetypes based on the name's index
+      const archetypeIndex = (j/8) % archetypesForRole.length; // Cycling through archetypes based on the name's index
       const archetype = archetypesForRole[archetypeIndex];
       const imageSrc = `./img/portraits/${playerName}.jpg`; // Assuming images are named after player names
 
