@@ -149,46 +149,56 @@ document.addEventListener('DOMContentLoaded', () => {
   //   playerBoard.insertBefore(image, playerBoard.firstChild);
   // }
 
-// Function to create player boards with random attributes
-function createPlayerBoards() {
-  const container = document.getElementById("playerBoardsContainer");
-  const playerSlider = document.getElementById("playerSlider");
-  const numberOfPlayers = parseInt(playerSlider.value); // Get the value from the player slider
+// Function to create player boards
+function createPlayerBoards(numberOfPlayers) {
+  const playerDetails = []; // Your array of player details (possibly fetched or pre-loaded)
 
-  container.innerHTML = ''; // Clear the container
+  // Logic to generate playerDetails, considering the number of players
 
-  // playerDetails.forEach(player => {
-  //   const playerName = player.name;
-  //   const meepleColor = player.color;
-  //   const { brains, smarts, wits, charm } = player.attributes;
-  //   const role = player.role;
-  //   const roleDescription = player.roleDescription;
-  //   const archetype = player.archetype;
-  //   const archetypeDescription = player.archetypeDescription;
-  //   const imageSrc = player.image;
+  // Example: Generating playerDetails for a specific number of players
+  for (let i = 0; i < numberOfPlayers; i++) {
+    // Create a player object with random or predefined attributes
+    const player = {
+      name: `Player ${i + 1}`,
+      color: 'blue', // Replace with actual color logic or values
+      image: `./img/player_${i + 1}.jpg`, // Replace with actual image source
+      role: 'Role A', // Replace with actual role logic or values
+      roleDescription: 'Description of Role A',
+      archetype: 'Archetype 1', // Replace with actual archetype logic or values
+      archetypeDescription: 'Description of Archetype 1',
+      attributes: {
+        brains: Math.floor(Math.random() * 6) + 1,
+        smarts: Math.floor(Math.random() * 6) + 1,
+        wits: Math.floor(Math.random() * 6) + 1,
+        charm: Math.floor(Math.random() * 6) + 1
+      }
+    };
 
-  //   // Log or use the retrieved properties as needed
-  //   console.log('Player Name:', playerName);
-  //   console.log('Meeple Color:', meepleColor);
-  //   console.log('Attributes:', { brains, smarts, wits, charm });
-  //   console.log('Role:', role);
-  //   console.log('Role Description:', roleDescription);
-  //   console.log('Archetype:', archetype);
-  //   console.log('Archetype Description:', archetypeDescription);
-  //   console.log('Image Source:', imageSrc);
-  //   console.log('---------------------------------------');
-  // });
+    // Push the player object into the playerDetails array
+    playerDetails.push(player);
+  }
+
+  // Example: Rendering player boards using playerDetails
+  playerDetails.forEach(player => {
+    // Create and render player boards with the information from the player object
+    // Construct HTML/CSS to display the player details on the UI
+    // Example: Use DOM manipulation or UI framework (React, Vue, etc.) to render the player boards
+    console.log('Creating player board for:', player.name);
+    console.log('Player color:', player.color);
+    console.log('Image source:', player.image);
+    console.log('Role:', player.role);
+    console.log('Role description:', player.roleDescription);
+    console.log('Archetype:', player.archetype);
+    console.log('Archetype description:', player.archetypeDescription);
+    console.log('Attributes:', player.attributes);
+    console.log('---------------------------');
+  });
+}
+
 
   for (let i = 1; i <= numberOfPlayers; i++) {
       const playerBoard = document.createElement("div");
       playerBoard.classList.add("player-board");
-
-      // Generate random name and attributes for each player
-      // const playerName = playerDetails[i].name;
-      // const brains = getRandomInt(3, 6);
-      // const smarts = getRandomInt(3, 6);
-      // const wits = getRandomInt(3, 6);
-      // const charm = getRandomInt(3, 6);
 
       // HTML content for the player board
       playerBoard.innerHTML = `
@@ -241,15 +251,14 @@ function createPlayerBoards() {
     board.appendChild(colorSquare);
   });
 
-  }
+
 
   // Event listener for the player slider
   //document.getElementById('playerSlider').addEventListener('input', createPlayerBoards);
 
-  startButton.addEventListener('click', () => {
+  document.getElementById('startButton').addEventListener('click', () => {
 
-    // Initial creation of player boards
-    createPlayerBoards();
+    createPlayerBoards(numberOfPlayers);
 
     // remove content from PLG after immediate activation
     const pageLayoutGrid = document.getElementById('pageLayoutGrid');
