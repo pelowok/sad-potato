@@ -1,7 +1,6 @@
 
 import {
   names,
-  uniqueNames,
   roles,
   roleDescriptions,
   archetypes,
@@ -100,6 +99,7 @@ function populatePlayerDetails(numberOfPlayers) {
       const playerName = names[i]; // Assuming "names" contains the list of unique player names
       const roleIndex = i % roles.length; // Cycling through roles based on the name's index
       const role = roles[roleIndex];
+      const roleDescription = i % roleDescriptions.length;
       const archetypesForRole = archetypes[roleIndex];
       const archetypeIndex = i % archetypesForRole.length; // Cycling through archetypes based on the name's index
       const archetype = archetypesForRole[archetypeIndex];
