@@ -127,7 +127,7 @@ function populatePlayerDetails(numberOfPlayers) {
 function createPlayerBoards2(numberOfPlayers) {
 
   // Logic to fetch or generate playerDetails based on the number of players
-  populatePlayerDetails(document.getElementById('playerSlider').value);
+  populatePlayerDetails(numberOfPlayers);
   console.log('playerDetails.length = ' + playerDetails.length);
 
 
