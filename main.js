@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const startButton = document.getElementById('startButton');
   const startingMessage = document.getElementById('startingMessage');
   const numberOfPlayers = document.getElementById('playerSlider').value;
+  const container = document.getElementById('playerBoardsContainer');
 
   function updateTeamImage(value) {
     const imageSrc = `img/${value}p.jpg`;
@@ -167,10 +168,10 @@ function createPlayerBoards(numberOfPlayers) {
       archetype: 'Archetype 1', // Replace with actual archetype logic or values
       archetypeDescription: 'Description of Archetype 1',
       attributes: {
-        brains: Math.floor(Math.random() * 6) + 1,
-        smarts: Math.floor(Math.random() * 6) + 1,
-        wits: Math.floor(Math.random() * 6) + 1,
-        charm: Math.floor(Math.random() * 6) + 1
+        brains: Math.floor(Math.random() * 4) + 3,
+        smarts: Math.floor(Math.random() * 4) + 3,
+        wits: Math.floor(Math.random() * 4) + 3,
+        charm: Math.floor(Math.random() * 4) + 3
       }
     };
 
