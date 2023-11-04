@@ -114,6 +114,65 @@ document.addEventListener('DOMContentLoaded', () => {
     updateTeamImage(numberOfPlayers);
   });
 
+// Function to create player boards
+function createPlayerBoards2(numberOfPlayers) {
+  // Assuming playerDetails is populated with the required information for each player
+
+  // Logic to fetch or generate playerDetails based on the number of players
+
+  // Example: Rendering player boards using playerDetails
+  playerDetails.slice(0, numberOfPlayers).forEach(player => {
+    // Create and render player boards with the information from the player object
+    // This depends on your UI framework or DOM structure
+
+    const playerBoard = document.createElement('div');
+    playerBoard.className = 'player-board';
+
+    // Add player's name
+    const playerName = document.createElement('div');
+    playerName.textContent = player.name;
+    playerBoard.appendChild(playerName);
+
+    // Add a colored square (meeple color) in the top right corner
+    const colorSquare = document.createElement('div');
+    colorSquare.className = 'color-square';
+    colorSquare.style.backgroundColor = player.color; // Set the color based on player's meeple color
+    playerBoard.appendChild(colorSquare);
+
+    // Add the player image
+    const playerImage = document.createElement('img');
+    playerImage.src = player.image; // Set the image source
+    playerImage.alt = player.name; // Alt text for accessibility
+    playerBoard.appendChild(playerImage);
+
+    // Add role and description
+    const role = document.createElement('div');
+    role.textContent = `Role: ${player.role}`;
+    playerBoard.appendChild(role);
+
+    const roleDescription = document.createElement('div');
+    roleDescription.textContent = `Role Description: ${player.roleDescription}`;
+    playerBoard.appendChild(roleDescription);
+
+    // Add archetype and description
+    const archetype = document.createElement('div');
+    archetype.textContent = `Archetype: ${player.archetype}`;
+    playerBoard.appendChild(archetype);
+
+    const archetypeDescription = document.createElement('div');
+    archetypeDescription.textContent = `Archetype Description: ${player.archetypeDescription}`;
+    playerBoard.appendChild(archetypeDescription);
+
+    // Add player attributes
+    const attributes = document.createElement('div');
+    attributes.textContent = `Attributes: Brains: ${player.attributes.brains}, Smarts: ${player.attributes.smarts}, Wits: ${player.attributes.wits}, Charm: ${player.attributes.charm}`;
+    playerBoard.appendChild(attributes);
+
+    // Append the player board to the main container
+    document.getElementById('main-container').appendChild(playerBoard);
+  });
+}
+
 
 // Function to create player boards
 function createPlayerBoards(numberOfPlayers) {
@@ -211,18 +270,18 @@ playerBoards.forEach((board, index) => {
 
 document.getElementById('startButton').addEventListener('click', () => {
 
-// remove content from PLG after immediate activation
-const pageLayoutGrid = document.getElementById('pageLayoutGrid');
-while (pageLayoutGrid.firstChild) {
-  pageLayoutGrid.removeChild(pageLayoutGrid.firstChild);
-}
+  // remove content from PLG after immediate activation
+  const pageLayoutGrid = document.getElementById('pageLayoutGrid');
+  while (pageLayoutGrid.firstChild) {
+    pageLayoutGrid.removeChild(pageLayoutGrid.firstChild);
+  }
 
   // remove the team image
   const imageContainer = document.getElementById('imageContainer');
   imageContainer.remove();
 
   // create the player boards
-  createPlayerBoards(numberOfPlayers);
+  createPlayerBoards2(numberOfPlayers);
 
   });
 
