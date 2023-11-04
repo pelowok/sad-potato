@@ -114,6 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateTeamImage(playerSlider.value);
 
   playerSlider.addEventListener('input', (event) => {
+    numberOfPlayers = playerSlider.value;
     updateTeamImage(numberOfPlayers);
   });
 
