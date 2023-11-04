@@ -19,8 +19,6 @@ function getRandomInt(min, max) {
 // Event listener for the player slider
 document.getElementById('playerSlider').addEventListener('input', (event) => {
 
-  console.log('numberOfPlayers = ' + playerSlider.value);
-
   const selectedPlayers = event.target.value;
   document.getElementById('playerCounter').textContent = `Number of Players: ${selectedPlayers}`;
 
@@ -95,28 +93,6 @@ restartOption.addEventListener('click', () => {
 
 // }
 
-// On DOM Content Load
-document.addEventListener('DOMContentLoaded', () => {
-  const playerSlider = document.getElementById('playerSlider');
-  const teamImage = document.getElementById('teamImage');
-  const playerCounter = document.getElementById('playerCounter');
-  const startButton = document.getElementById('startButton');
-  const startingMessage = document.getElementById('startingMessage');
-  // const numberOfPlayers = document.getElementById('playerSlider').value;
-  const container = document.getElementById('playerBoardsContainer');
-
-  function updateTeamImage(value) {
-    const imageSrc = `img/${value}p.jpg`;
-    teamImage.src = imageSrc;
-    playerCounter.textContent = `Number of Players: ${value}`;
-  }
-
-  updateTeamImage(playerSlider.value);
-
-  playerSlider.addEventListener('input', (event) => {
-    updateTeamImage(playerSlider.value);
-  });
-
 // Function to create player boards
 function createPlayerBoards2(numberOfPlayers) {
   // Assuming playerDetails is populated with the required information for each player
@@ -178,6 +154,30 @@ function createPlayerBoards2(numberOfPlayers) {
     document.getElementById('playerBoardsContainer').appendChild(playerBoard);
   });
 }
+
+// On DOM Content Load
+document.addEventListener('DOMContentLoaded', () => {
+  const playerSlider = document.getElementById('playerSlider');
+  const teamImage = document.getElementById('teamImage');
+  const playerCounter = document.getElementById('playerCounter');
+  const startButton = document.getElementById('startButton');
+  const startingMessage = document.getElementById('startingMessage');
+  // const numberOfPlayers = document.getElementById('playerSlider').value;
+  const container = document.getElementById('playerBoardsContainer');
+
+  function updateTeamImage(value) {
+    const imageSrc = `img/${value}p.jpg`;
+    teamImage.src = imageSrc;
+    playerCounter.textContent = `Number of Players: ${value}`;
+  }
+
+  updateTeamImage(playerSlider.value);
+
+  playerSlider.addEventListener('input', (event) => {
+    updateTeamImage(playerSlider.value);
+  });
+
+
 
 
 // Function to create player boards
