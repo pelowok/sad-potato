@@ -337,6 +337,11 @@ playerBoards.forEach((board, index) => {
   playerNumber.classList.add('player-number');
   playerNumber.textContent = index + 1; // Adding 1 to the index to display the correct player number
 
+  // Adjust styles for player number visibility
+  playerNumber.style.color = 'white'; // Change text color to white
+  playerNumber.style.fontSize = '20px'; // Modify font size
+  playerNumber.style.fontWeight = 'bold'; // Make the number bold
+
   colorSquare.appendChild(playerNumber); // Append the player number to the circular color square
 
   // Reset the color index when reaching the end of the colors array
