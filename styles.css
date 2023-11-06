@@ -232,25 +232,26 @@ input[type="range"] {
   height: 100px;
   position: relative;
   /* Additional styling for the octagonal shape */
+  border: 1px solid #3c17c1; /* Apply border to the entire grid */
 }
 
 .meeple .meeple-content {
   position: absolute;
   top: 0;
   left: 0;
-  transform: translate(-50%, -50%);
+  /* transform: translate(-50%, -50%); */
 }
 
 .meeple .meeple-circle {
   position: absolute;
   top: 0px; /* Adjust to position the meeple icon where you want */
-  left: 1px; /* Adjust to position the meeple icon where you want */
+  right: 0px; /* Adjust to position the meeple icon where you want */
   width: 20px; /* Adjust width and height to ensure a circular shape */
   height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 10px; /* Adjust margin for spacing */
+  margin-right: 0px; /* Adjust margin for spacing */
   background-color: #000; /* Default color for the squares */
 }
 

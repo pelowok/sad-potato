@@ -1,6 +1,5 @@
 
 
-
   // Function to generate a random name for players
   const names = [
     "Adela", "Aidan", "Alessia", "Ami", "Amira",

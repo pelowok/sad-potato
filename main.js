@@ -174,9 +174,7 @@ function createPlayerBoards(numberOfPlayers) {
     attributes.textContent = `Attributes: Brains: ${player.attributes.brains}, Smarts: ${player.attributes.smarts}, Wits: ${player.attributes.wits}, Charm: ${player.attributes.charm}`;
     playerBoard.appendChild(attributes);
 
-
-
-
+// MEEPLE START
     // Create the meeple element and associate its attributes with playerDescription
     const meeple = document.createElement('div');
     meeple.classList.add('meeple');
@@ -212,12 +210,60 @@ function createPlayerBoards(numberOfPlayers) {
     meepleContent.appendChild(meepleImage);
 
     playerBoard.appendChild(meeple);
+    initializeMeeple(meeple);
+
+  // END MEEPLE
 
     // Append the player board to the main container
     document.getElementById('playerBoardsContainer').appendChild(playerBoard);
   });
 }
 
+// function to add listeners to meeples
+function initializeMeeple(meepleElement){
+  // Get the meeple element
+  // const meeple = document.querySelector('.meeple');
+  const meeple = meepleElement;
+
+  // Add the dragstart event listener to start the drag operation
+  meeple.addEventListener('dragstart', (event) => {
+      // Set the drag data with a MIME type and the meeple's unique identifier
+      event.dataTransfer.setData('text/plain', 'meeple-drag');
+
+      // Set the dragged element's ID as the meeple ID for identification during the drop
+      event.dataTransfer.setDragImage(meeple, 0, 0); // Set drag image (optional)
+
+      // Optionally, apply some visual effects or changes to the dragged element
+      meeple.style.opacity = '0.5';
+  });
+
+  // Add the dragend event listener to end the drag operation
+  meeple.addEventListener('dragend', () => {
+      // Revert any visual changes applied during dragstart
+      meeple.style.opacity = '1';
+  });
+
+  // Add the dragover event listener to allow elements to be dropped
+  document.addEventListener('dragover', (event) => {
+      event.preventDefault(); // Necessary to allow a drop
+  });
+
+  // Add the drop event listener to handle the dropped element
+  document.addEventListener('drop', (event) => {
+      event.preventDefault();
+      // Check if the dropped data is the meeple
+      if (event.dataTransfer.getData('text/plain') === 'meeple-drag') {
+          // Get the coordinates of the drop
+          const x = event.clientX;
+          const y = event.clientY;
+
+          // Place the meeple at the new drop coordinates
+          meeple.style.position = 'fixed';
+          meeple.style.left = `${x}px`;
+          meeple.style.top = `${y}px`;
+      }
+  });
+};
 // On DOM Content Load
 document.addEventListener('DOMContentLoaded', () => {
   const playerSlider = document.getElementById('playerSlider');
