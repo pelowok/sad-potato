@@ -207,6 +207,25 @@ input[type="range"] {
   border-radius: 3px;
 }
 
+.character-circle {
+  position: absolute;
+  top: 10px; /* Adjust to position the meeple icon where you want */
+  left: 10px; /* Adjust to position the meeple icon where you want */
+  width: 50px; /* Adjust width and height to ensure a circular shape */
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px; /* Adjust margin for spacing */
+  background-color: #000; /* Default color for the squares */
+}
+
+.character-number {
+  color: white; /* Set text color to ensure visibility */
+  font-size: 3rem; /* Adjust font size for visibility */
+  font-weight: bold; /* Make the number bold */
+}
+
 /* Style for the octagonal draggable element */
 .meeple {
   width: 100px;
@@ -224,11 +243,10 @@ input[type="range"] {
 
 .meeple .meeple-circle {
   position: absolute;
-  top: 10px; /* Adjust to position the meeple icon where you want */
-  left: 10px; /* Adjust to position the meeple icon where you want */
-  width: 80px; /* Adjust width and height to ensure a circular shape */
-  height: 80px;
-  border-radius: 50%; /* Create a circular shape */
+  top: 0px; /* Adjust to position the meeple icon where you want */
+  left: 1px; /* Adjust to position the meeple icon where you want */
+  width: 20px; /* Adjust width and height to ensure a circular shape */
+  height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -238,7 +256,7 @@ input[type="range"] {
 
 .meeple .meeple-number {
   color: white; /* Set text color to ensure visibility */
-  font-size: 3rem; /* Adjust font size for visibility */
+  font-size: 1rem; /* Adjust font size for visibility */
   font-weight: bold; /* Make the number bold */
 }
 
