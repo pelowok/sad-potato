@@ -1,5 +1,6 @@
 body {
-  font-size: 14px;
+  font-family: 'Proxima Nova', sans-serif; /* Setting Proxima Nova as the default font for the entire document */
+  font-size: 16px;
   margin: 2em;
   display: flex;
   flex-direction: column;
@@ -206,21 +207,13 @@ input[type="range"] {
   border-radius: 3px;
 }
 
-.color-square {
-  /* not sure this is used anymore */
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  border: 1px solid black;
-  border-radius: 5px;
-  /* Apply color using background or another styling attribute */
-}
 
-.color-square-circle {
-  width: 50px; /* Adjust width and height to ensure a circular shape */
-  height: 50px;
+.meeple-circle {
+  position: absolute;
+  top: 10px; /* Adjust to position the meeple icon where you want */
+  left: 10px; /* Adjust to position the meeple icon where you want */
+  width: 80px; /* Adjust width and height to ensure a circular shape */
+  height: 80px;
   border-radius: 50%; /* Create a circular shape */
   display: flex;
   align-items: center;
@@ -229,8 +222,8 @@ input[type="range"] {
   background-color: #000; /* Default color for the squares */
 }
 
-.player-number {
+.meeple-number {
   color: white; /* Set text color to ensure visibility */
-  font-size: 20px; /* Adjust font size for visibility */
+  font-size: 3rem; /* Adjust font size for visibility */
   font-weight: bold; /* Make the number bold */
 }

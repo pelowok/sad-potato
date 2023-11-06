@@ -174,19 +174,19 @@ function createPlayerBoards2(numberOfPlayers) {
     // colorSquare.className = 'color-square';
     // colorSquare.style.backgroundColor = player.color; // Set the color based on player's meeple color
     // playerBoard.appendChild(colorSquare);
-    const colorSquare = document.createElement('div');
-    colorSquare.classList.add('color-square-circle'); // Adding a class for the circular shape
-    colorSquare.style.backgroundColor = player.color;; // Set the color based on player's meeple color
+    const meepleCircle = document.createElement('div');
+    meepleCircle.classList.add('meeple-circle'); // Adding a class for the circular shape
+    meepleCircle.style.backgroundColor = player.color;; // Set the color based on player's meeple color
 
     // Add a number to the colored square (meeple color) in the top right corner
-    const playerNumber = document.createElement('span');
-    playerNumber.classList.add('player-number');
+    const meepleNumber = document.createElement('span');
+    meepleNumber.classList.add('meeple-number');
     const playerIndex = pIndex++;
-    playerNumber.textContent = playerIndex;
+    meepleNumber.textContent = playerIndex;
 
 
-    colorSquare.appendChild(playerNumber);
-    playerBoard.appendChild(colorSquare);
+    meepleCircle.appendChild(meepleNumber);
+    playerBoard.appendChild(meepleCircle);
 
 
     // Add the player image
