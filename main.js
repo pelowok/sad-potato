@@ -154,6 +154,8 @@ function createPlayerBoards2(numberOfPlayers) {
   // console.log('playerDetails.length = ' + playerDetails.length);
 
 
+  let pIndex = 1;
+
   playerDetails.slice(0, numberOfPlayers).forEach(player => {
 
     // Create and render player boards with the information from the player object
@@ -179,10 +181,12 @@ function createPlayerBoards2(numberOfPlayers) {
     // Add a number to the colored square (meeple color) in the top right corner
     const playerNumber = document.createElement('span');
     playerNumber.classList.add('player-number');
-    playerNumber.textContent = index + 1;
+    const playerIndex = pIndex++;
+    playerNumber.textContent = playerIndex;
+
 
     colorSquare.appendChild(playerNumber);
-    board.appendChild(colorSquare);
+    playerBoard.appendChild(colorSquare);
 
 
     // Add the player image
