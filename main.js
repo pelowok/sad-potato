@@ -224,46 +224,50 @@ function createPlayerBoards(numberOfPlayers) {
 
 // function to add listeners to meeples
 function initializeMeeples() {
-  document.addEventListener("dragstart", (event) => {
-    if (event.target.classList.contains("meeple")) {
-      event.dataTransfer.setData("text/plain", event.target.id);
-      event.dataTransfer.setDragImage(event.target, 0, 0);
-      event.target.style.opacity = "0.5";
-    }
+
+  // Get the meeple element
+  const meeple = document.querySelector('.meeple');
+
+  // Add the dragstart event listener to start the drag operation
+  meeple.addEventListener('dragstart', (event) => {
+      // Set the drag data with a MIME type and the meeple's unique identifier
+      event.dataTransfer.setData('text/plain', 'meeple-drag');
+
+      // Set the dragged element's ID as the meeple ID for identification during the drop
+      event.dataTransfer.setDragImage(meeple, 0, 0); // Set drag image (optional)
+
+      // Optionally, apply some visual effects or changes to the dragged element
+      meeple.style.opacity = '0.5';
   });
 
-  document.addEventListener("dragend", (event) => {
-    if (event.target.classList.contains("meeple")) {
-      event.target.style.opacity = "1";
-    }
+  // Add the dragend event listener to end the drag operation
+  meeple.addEventListener('dragend', () => {
+      // Revert any visual changes applied during dragstart
+      meeple.style.opacity = '1';
   });
 
-  document.addEventListener("dragover", (event) => {
-    event.preventDefault();
-    if (event.target.classList.contains("meeple")) {
-      event.target.style.opacity = "0.5";
-    }
+  // Add the dragover event listener to allow elements to be dropped
+  document.addEventListener('dragover', (event) => {
+      event.preventDefault(); // Necessary to allow a drop
   });
 
-  document.addEventListener("dragleave", (event) => {
-    if (event.target.classList.contains("meeple")) {
-      event.target.style.opacity = "1";
-    }
+  // Add the drop event listener to handle the dropped element
+  document.addEventListener('drop', (event) => {
+      event.preventDefault();
+      // Check if the dropped data is the meeple
+      if (event.dataTransfer.getData('text/plain') === 'meeple-drag') {
+          // Get the coordinates of the drop
+          const x = event.clientX;
+          const y = event.clientY;
+
+          // Place the meeple at the new drop coordinates
+          meeple.style.position = 'fixed';
+          meeple.style.left = `${x}px`;
+          meeple.style.top = `${y}px`;
+      }
   });
 
-  document.addEventListener("drop", (event) => {
-    event.preventDefault();
-    const data = event.dataTransfer.getData("text/plain");
-    const droppedMeeple = document.getElementById(data);
-    if (droppedMeeple && event.target.classList.contains("player-board")) {
-      const rect = event.target.getBoundingClientRect();
-      const offsetX = event.clientX - rect.left;
-      const offsetY = event.clientY - rect.top;
-      droppedMeeple.style.position = "absolute";
-      droppedMeeple.style.left = offsetX + "px";
-      droppedMeeple.style.top = offsetY + "px";
-    }
-  });
+
 }
 
 
