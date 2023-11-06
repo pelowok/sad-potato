@@ -291,18 +291,37 @@ function createPlayerBoards(numberOfPlayers) {
     container.appendChild(playerBoard);
     // addPlayerImage(i-1, playerName);
 
-    console.log('Creating player board for:', player.name);
-    console.log('Player color:', player.color);
-    console.log('Image source:', player.image);
-    console.log('Role:', player.role);
-    console.log('Role description:', player.roleDescription);
-    console.log('Archetype:', player.archetype);
-    console.log('Archetype description:', player.archetypeDescription);
-    console.log('Attributes:', player.attributes);
-    console.log('---------------------------');
+    // console.log('Creating player board for:', player.name);
+    // console.log('Player color:', player.color);
+    // console.log('Image source:', player.image);
+    // console.log('Role:', player.role);
+    // console.log('Role description:', player.roleDescription);
+    // console.log('Archetype:', player.archetype);
+    // console.log('Archetype description:', player.archetypeDescription);
+    // console.log('Attributes:', player.attributes);
+    // console.log('---------------------------');
 
   });
 }
+
+// const playerBoards = document.querySelectorAll('.player-board');
+
+// let colorIndex = 0;
+
+// playerBoards.forEach((board, index) => {
+//   const colorSquare = document.createElement('div');
+//   colorSquare.classList.add('color-square');
+//   colorSquare.style.backgroundColor = playerColors[colorIndex];
+
+//   // Reset the color index when reaching the end of the colors array
+//   if (colorIndex === colors.length - 1) {
+//     colorIndex = 0;
+//   } else {
+//     colorIndex++;
+//   }
+
+//   board.appendChild(colorSquare);
+// });
 
 const playerBoards = document.querySelectorAll('.player-board');
 
@@ -310,11 +329,18 @@ let colorIndex = 0;
 
 playerBoards.forEach((board, index) => {
   const colorSquare = document.createElement('div');
-  colorSquare.classList.add('color-square');
+  colorSquare.classList.add('color-square-circle'); // Adding a class for the circular shape
   colorSquare.style.backgroundColor = playerColors[colorIndex];
 
+  // Creating a span for the player number within the circle
+  const playerNumber = document.createElement('span');
+  playerNumber.classList.add('player-number');
+  playerNumber.textContent = index + 1; // Adding 1 to the index to display the correct player number
+
+  colorSquare.appendChild(playerNumber); // Append the player number to the circular color square
+
   // Reset the color index when reaching the end of the colors array
-  if (colorIndex === colors.length - 1) {
+  if (colorIndex === playerColors.length - 1) {
     colorIndex = 0;
   } else {
     colorIndex++;
