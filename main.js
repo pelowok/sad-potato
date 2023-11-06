@@ -178,8 +178,9 @@ function createPlayerBoards(numberOfPlayers) {
     // Create the meeple element and associate its attributes with playerDescription
     const meeple = document.createElement('div');
     meeple.classList.add('meeple');
-    meeple.setAttribute('id', player.name);
-    console.log(meeple.id);
+    const meepleId = 'meeple'+playerIndex;
+    meeple.setAttribute('id', meepleId);
+    console.log('meepleId : ' + meepleId);
 
     // Create a meeple-content element to hold all the content within the meeple
     const meepleContent = document.createElement('div');
@@ -211,7 +212,7 @@ function createPlayerBoards(numberOfPlayers) {
     meepleImage.alt = player.name; // Alt text for accessibility
     meepleContent.appendChild(meepleImage);
 
-    initializeMeeples(meeple.id);
+    initializeMeeples(meeple);
     playerBoard.appendChild(meeple);
 
   // END MEEPLE
@@ -225,10 +226,9 @@ function createPlayerBoards(numberOfPlayers) {
 }
 
 // function to add listeners to meeples
-function initializeMeeples(meepleId) {
+function initializeMeeples(meeple) {
 
   // Get the meeple element
-  const meeple = document.getElementById(meepleId);
 
   console.log(meeple);
 
