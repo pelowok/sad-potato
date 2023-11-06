@@ -244,17 +244,17 @@ function initializeMeeples(){
   });
 
   document.addEventListener('drop', (event) => {
-      event.preventDefault();
-      const droppedMeepleId = event.dataTransfer.getData('text/plain');
-      const droppedMeeple = document.getElementById(droppedMeepleId);
-
-      if (droppedMeeple) {
-          const x = event.clientX;
-          const y = event.clientY;
-          droppedMeeple.style.position = 'fixed';
-          droppedMeeple.style.left = `${x}px`;
-          droppedMeeple.style.top = `${y}px`;
-      }
+    event.preventDefault();
+    const data = event.dataTransfer.getData('text/plain');
+    const droppedMeeple = document.getElementById(data);
+    if (droppedMeeple && event.target.classList.contains('player-board')) {
+        const rect = event.target.getBoundingClientRect();
+        const offsetX = event.clientX - rect.left;
+        const offsetY = event.clientY - rect.top;
+        droppedMeeple.style.position = 'absolute';
+        droppedMeeple.style.left = offsetX + 'px';
+        droppedMeeple.style.top = offsetY + 'px';
+    }
   });
 
 }
