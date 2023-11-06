@@ -212,8 +212,8 @@ function createPlayerBoards(numberOfPlayers) {
     meepleImage.alt = player.name; // Alt text for accessibility
     meepleContent.appendChild(meepleImage);
 
-    initializeMeeples(meeple);
     playerBoard.appendChild(meeple);
+    initializeMeeples(meepleId);
 
   // END MEEPLE
 
@@ -226,11 +226,13 @@ function createPlayerBoards(numberOfPlayers) {
 }
 
 // function to add listeners to meeples
-function initializeMeeples(meeple) {
+function initializeMeeples(meepleId) {
 
   // Get the meeple element
+  const meeple = document.getElementById(meepleId);
 
-  console.log(meeple);
+  console.log('meeple : ' + meeple);
+  console.log('meepleId : ' + meepleId);
 
   // Add the dragstart event listener to start the drag operation
   meeple.addEventListener('dragstart', (event) => {
