@@ -211,9 +211,8 @@ function createPlayerBoards(numberOfPlayers) {
     meepleImage.alt = player.name; // Alt text for accessibility
     meepleContent.appendChild(meepleImage);
 
-    playerBoard.appendChild(meeple);
-
     initializeMeeples(meeple.id);
+    playerBoard.appendChild(meeple);
 
   // END MEEPLE
 
