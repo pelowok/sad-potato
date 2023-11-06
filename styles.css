@@ -207,6 +207,7 @@ input[type="range"] {
 }
 
 .color-square {
+  /* not sure this is used anymore */
   width: 50px;
   height: 50px;
   position: absolute;
@@ -215,4 +216,21 @@ input[type="range"] {
   border: 1px solid black;
   border-radius: 5px;
   /* Apply color using background or another styling attribute */
+}
+
+.color-square-circle {
+  width: 50px; /* Adjust width and height to ensure a circular shape */
+  height: 50px;
+  border-radius: 50%; /* Create a circular shape */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px; /* Adjust margin for spacing */
+  background-color: #000; /* Default color for the squares */
+}
+
+.player-number {
+  color: white; /* Set text color to ensure visibility */
+  font-size: 20px; /* Adjust font size for visibility */
+  font-weight: bold; /* Make the number bold */
 }
