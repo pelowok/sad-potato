@@ -223,40 +223,47 @@ function createPlayerBoards(numberOfPlayers) {
 }
 
 // function to add listeners to meeples
-function initializeMeeples(){
-  // Code to handle drag and drop functionality
-  const meepleElements = document.querySelectorAll('.meeple');
-
-  meepleElements.forEach((meeple) => {
-      meeple.addEventListener('dragstart', (event) => {
-          event.dataTransfer.setData('text/plain', meeple.id);
-          event.dataTransfer.setDragImage(meeple, 0, 0);
-          event.target.style.opacity = '0.5';
-      });
-
-      meeple.addEventListener('dragend', (event) => {
-          event.target.style.opacity = '1';
-      });
-  });
-
-  document.addEventListener('dragover', (event) => {
-      event.preventDefault();
-  });
-
-  document.addEventListener('drop', (event) => {
-    event.preventDefault();
-    const data = event.dataTransfer.getData('text/plain');
-    const droppedMeeple = document.getElementById(data);
-    if (droppedMeeple && event.target.classList.contains('player-board')) {
-        const rect = event.target.getBoundingClientRect();
-        const offsetX = event.clientX - rect.left;
-        const offsetY = event.clientY - rect.top;
-        droppedMeeple.style.position = 'absolute';
-        droppedMeeple.style.left = offsetX + 'px';
-        droppedMeeple.style.top = offsetY + 'px';
+function initializeMeeples() {
+  document.addEventListener("dragstart", (event) => {
+    if (event.target.classList.contains("meeple")) {
+      event.dataTransfer.setData("text/plain", event.target.id);
+      event.dataTransfer.setDragImage(event.target, 0, 0);
+      event.target.style.opacity = "0.5";
     }
   });
 
+  document.addEventListener("dragend", (event) => {
+    if (event.target.classList.contains("meeple")) {
+      event.target.style.opacity = "1";
+    }
+  });
+
+  document.addEventListener("dragover", (event) => {
+    event.preventDefault();
+    if (event.target.classList.contains("meeple")) {
+      event.target.style.opacity = "0.5";
+    }
+  });
+
+  document.addEventListener("dragleave", (event) => {
+    if (event.target.classList.contains("meeple")) {
+      event.target.style.opacity = "1";
+    }
+  });
+
+  document.addEventListener("drop", (event) => {
+    event.preventDefault();
+    const data = event.dataTransfer.getData("text/plain");
+    const droppedMeeple = document.getElementById(data);
+    if (droppedMeeple && event.target.classList.contains("player-board")) {
+      const rect = event.target.getBoundingClientRect();
+      const offsetX = event.clientX - rect.left;
+      const offsetY = event.clientY - rect.top;
+      droppedMeeple.style.position = "absolute";
+      droppedMeeple.style.left = offsetX + "px";
+      droppedMeeple.style.top = offsetY + "px";
+    }
+  });
 }
 
 
