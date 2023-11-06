@@ -207,8 +207,22 @@ input[type="range"] {
   border-radius: 3px;
 }
 
+/* Style for the octagonal draggable element */
+.meeple {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  /* Additional styling for the octagonal shape */
+}
 
-.meeple-circle {
+.meeple .meeple-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+.meeple .meeple-circle {
   position: absolute;
   top: 10px; /* Adjust to position the meeple icon where you want */
   left: 10px; /* Adjust to position the meeple icon where you want */
@@ -222,8 +236,18 @@ input[type="range"] {
   background-color: #000; /* Default color for the squares */
 }
 
-.meeple-number {
+.meeple .meeple-number {
   color: white; /* Set text color to ensure visibility */
   font-size: 3rem; /* Adjust font size for visibility */
   font-weight: bold; /* Make the number bold */
 }
+
+.meeple .meeple-details {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none; /* Initially hide the details */
+  /* Additional styling for the player details */
+}
+
