@@ -168,10 +168,22 @@ function createPlayerBoards2(numberOfPlayers) {
     playerBoard.appendChild(playerName);
 
     // Add a colored square (meeple color) in the top right corner
+    // const colorSquare = document.createElement('div');
+    // colorSquare.className = 'color-square';
+    // colorSquare.style.backgroundColor = player.color; // Set the color based on player's meeple color
+    // playerBoard.appendChild(colorSquare);
     const colorSquare = document.createElement('div');
-    colorSquare.className = 'color-square';
-    colorSquare.style.backgroundColor = player.color; // Set the color based on player's meeple color
-    playerBoard.appendChild(colorSquare);
+    colorSquare.classList.add('color-square-circle'); // Adding a class for the circular shape
+    colorSquare.style.backgroundColor = player.color;; // Set the color based on player's meeple color
+
+    // Add a number to the colored square (meeple color) in the top right corner
+    const playerNumber = document.createElement('span');
+    playerNumber.classList.add('player-number');
+    playerNumber.textContent = index + 1;
+
+    colorSquare.appendChild(playerNumber);
+    board.appendChild(colorSquare);
+
 
     // Add the player image
     const playerImage = document.createElement('img');
@@ -323,20 +335,7 @@ function createPlayerBoards(numberOfPlayers) {
 //   board.appendChild(colorSquare);
 // });
 
-const playerBoards = document.querySelectorAll('.player-board');
 
-playerBoards.forEach((board, index) => {
-  const colorSquare = document.createElement('div');
-  colorSquare.classList.add('color-square-circle'); // Adding a class for the circular shape
-  colorSquare.style.backgroundColor = playerColors[index % playerColors.length];
-
-  const playerNumber = document.createElement('span');
-  playerNumber.classList.add('player-number');
-  playerNumber.textContent = index + 1;
-
-  colorSquare.appendChild(playerNumber);
-  board.appendChild(colorSquare);
-});
 
 // Event listener for the player slider
 //document.getElementById('playerSlider').addEventListener('input', createPlayerBoards);
