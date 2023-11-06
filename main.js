@@ -210,20 +210,26 @@ function createPlayerBoards(numberOfPlayers) {
     meepleContent.appendChild(meepleImage);
 
     playerBoard.appendChild(meeple);
-    initializeMeeple(meeple);
+
 
   // END MEEPLE
 
     // Append the player board to the main container
     document.getElementById('playerBoardsContainer').appendChild(playerBoard);
+
+    // give the meeples functionality
+    initializeMeeples();
   });
 }
 
 // function to add listeners to meeples
-function initializeMeeple(meepleElement){
+function initializeMeeples(){
   // Get the meeple element
-  // const meeple = document.querySelector('.meeple');
-  const meeple = meepleElement;
+  const meepleElements = document.querySelectorAll('.meeple');
+  console.debug(meeple.name);
+
+  // Add event listeners to each meeple element individually
+  meepleElements.forEach((meeple) => {
 
   // Add the dragstart event listener to start the drag operation
   meeple.addEventListener('dragstart', (event) => {
@@ -263,7 +269,8 @@ function initializeMeeple(meepleElement){
           meeple.style.top = `${y}px`;
       }
   });
-};
+});
+
 // On DOM Content Load
 document.addEventListener('DOMContentLoaded', () => {
   const playerSlider = document.getElementById('playerSlider');
