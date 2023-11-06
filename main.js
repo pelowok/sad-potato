@@ -178,6 +178,8 @@ function createPlayerBoards(numberOfPlayers) {
     // Create the meeple element and associate its attributes with playerDescription
     const meeple = document.createElement('div');
     meeple.classList.add('meeple');
+    meeple.setAttribute('id', player.name);
+    console.log(meeple.id);
 
     // Create a meeple-content element to hold all the content within the meeple
     const meepleContent = document.createElement('div');
@@ -211,6 +213,7 @@ function createPlayerBoards(numberOfPlayers) {
 
     playerBoard.appendChild(meeple);
 
+    initializeMeeples(meeple.id);
 
   // END MEEPLE
 
@@ -218,15 +221,17 @@ function createPlayerBoards(numberOfPlayers) {
     document.getElementById('playerBoardsContainer').appendChild(playerBoard);
 
     // give the meeples functionality
-    initializeMeeples();
+
   });
 }
 
 // function to add listeners to meeples
-function initializeMeeples() {
+function initializeMeeples(meepleId) {
 
   // Get the meeple element
-  const meeple = document.querySelector('.meeple');
+  const meeple = document.getElementById(meepleId);
+
+  console.log(meeple);
 
   // Add the dragstart event listener to start the drag operation
   meeple.addEventListener('dragstart', (event) => {
