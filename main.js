@@ -8,6 +8,10 @@ import {
   playerColors,
 } from './characterData.js';
 
+import {
+  arrMeepleId
+} from './meeple.js';
+
 const playerDetails = [];
 
 // Function to generate a random integer within a range
@@ -128,7 +132,10 @@ function createPlayerBoards(numberOfPlayers) {
 
     // Add the character's name (characterName)
     const characterName = document.createElement('div');
-    characterName.textContent = player.name;
+    const characterNameTitle = document.createElement('h3');
+    characterNameTitle.setAttribute('id', 'characterNameTitle');
+    characterNameTitle.textContent = player.name;
+    characterName.appendChild(characterNameTitle);
     playerBoard.appendChild(characterName);
 
     // Add a colored circle (characterCircle) in the top right corner
@@ -213,7 +220,9 @@ function createPlayerBoards(numberOfPlayers) {
     meepleContent.appendChild(meepleImage);
 
     playerBoard.appendChild(meeple);
-    initializeMeeples(meepleId);
+
+    arrMeepleId.push(meepleId);
+    console.log('arrMeepleId : ' + arrMeepleId);
 
   // END MEEPLE
 
@@ -228,8 +237,10 @@ function createPlayerBoards(numberOfPlayers) {
 // function to add listeners to meeples
 function initializeMeeples(meepleId) {
 
+  console.log('meepleId : ' + meepleId);
+
   // Get the meeple element
-  const meeple = document.getElementById(meepleId);
+  const meeple = document.getElementById(`${meepleId}`);
 
   console.log('meeple : ' + meeple);
   console.log('meepleId : ' + meepleId);

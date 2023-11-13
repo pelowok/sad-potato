@@ -1,2 +1,7 @@
 
 
+const arrMeepleId = [];
+
+export {
+  arrMeepleId
+}

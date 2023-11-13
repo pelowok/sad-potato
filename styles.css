@@ -177,6 +177,7 @@ input[type="range"] {
   width: calc(100% - 20px);
   height: auto;
   object-fit: cover;
+  margin-bottom: 10px;
 }
 
 
