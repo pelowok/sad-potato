@@ -270,7 +270,8 @@ function initializeMeeples(meepleId) {
 
   // Add the drop event listener to handle the dropped element
   document.addEventListener('drop', (event) => {
-      event.preventDefault();
+    console.log('dropped : ' + event);
+    event.preventDefault();
       // Check if the dropped data is the meeple
       if (event.dataTransfer.getData('text/plain') === 'meeple-drag') {
           // Get the coordinates of the drop
