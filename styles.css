@@ -16,6 +16,11 @@ body {
   margin: 0;
 }
 
+/* WCAG compliance */
+button:focus, a:focus {
+  outline: 2px solid #000;
+}
+
 /* GAME CONTROLS */
 
 #restartGame2 {
