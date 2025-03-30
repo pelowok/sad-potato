@@ -1,6 +1,5 @@
 
 
-
   // Function to generate a random name for players
   const names = [
     "Adela", "Aidan", "Alessia", "Ami", "Amira",
@@ -134,7 +133,9 @@
   ]
 ];
 
-const playerColors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Violet', 'Black'];
+// const playerColors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Violet', 'Black'];
+const playerColors = ['#B81414', '#B86314', '#B8A814', '#14B82E', '#144BB8', '#2F14B8', '#8114B8'];
+
 
 export {
   names,

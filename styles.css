@@ -1,5 +1,6 @@
 body {
-  font-size: 14px;
+  font-family: 'Proxima Nova', sans-serif; /* Setting Proxima Nova as the default font for the entire document */
+  font-size: 16px;
   margin: 2em;
   display: flex;
   flex-direction: column;
@@ -176,6 +177,7 @@ input[type="range"] {
   width: calc(100% - 20px);
   height: auto;
   object-fit: cover;
+  margin-bottom: 10px;
 }
 
 
@@ -206,13 +208,66 @@ input[type="range"] {
   border-radius: 3px;
 }
 
-.color-square {
-  width: 50px;
+.character-circle {
+  position: absolute;
+  top: 10px; /* Adjust to position the meeple icon where you want */
+  left: 10px; /* Adjust to position the meeple icon where you want */
+  width: 50px; /* Adjust width and height to ensure a circular shape */
   height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px; /* Adjust margin for spacing */
+  background-color: #000; /* Default color for the squares */
+}
+
+.character-number {
+  color: white; /* Set text color to ensure visibility */
+  font-size: 3rem; /* Adjust font size for visibility */
+  font-weight: bold; /* Make the number bold */
+}
+
+/* Style for the octagonal draggable element */
+.meeple {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  /* Additional styling for the octagonal shape */
+  border: 1px solid #3c17c1; /* Apply border to the entire grid */
+}
+
+.meeple .meeple-content {
   position: absolute;
   top: 0;
-  right: 0;
-  border: 1px solid black;
-  border-radius: 5px;
-  /* Apply color using background or another styling attribute */
+  left: 0;
+  /* transform: translate(-50%, -50%); */
 }
+
+.meeple .meeple-circle {
+  position: absolute;
+  top: 0px; /* Adjust to position the meeple icon where you want */
+  right: 0px; /* Adjust to position the meeple icon where you want */
+  width: 20px; /* Adjust width and height to ensure a circular shape */
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0px; /* Adjust margin for spacing */
+  background-color: #000; /* Default color for the squares */
+}
+
+.meeple .meeple-number {
+  color: white; /* Set text color to ensure visibility */
+  font-size: 1rem; /* Adjust font size for visibility */
+  font-weight: bold; /* Make the number bold */
+}
+
+.meeple .meeple-details {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none; /* Initially hide the details */
+  /* Additional styling for the player details */
+}
+
